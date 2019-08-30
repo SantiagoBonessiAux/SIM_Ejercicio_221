@@ -57,14 +57,14 @@ namespace Final_SIM_Ejercicio_221
 
             int i = 0;
 
-            while (ve.reloj <= tiempoFinal)
-            {
-                ve.fila = i;
+            //while (ve.reloj <= tiempoFinal)
+            //{
+            //    ve.fila = i;
 
 
 
-                i++;
-            }// fin del while
+            //    i++;
+            //}// fin del while
 
 
 

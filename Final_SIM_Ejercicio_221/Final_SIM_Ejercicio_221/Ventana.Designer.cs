@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Ventana));
             this.label38 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblHS = new System.Windows.Forms.Label();
@@ -43,10 +44,22 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTpoLLeg = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtTpoSubirPasajero = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtTpoEsperaMaximaPasajeros = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCapacidadColectivos = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // label38
@@ -126,12 +139,12 @@
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 10;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(960, 380);
+            this.dgvDatos.Size = new System.Drawing.Size(700, 380);
             this.dgvDatos.TabIndex = 20;
             // 
             // btnSimular
             // 
-            this.btnSimular.Location = new System.Drawing.Point(881, 81);
+            this.btnSimular.Location = new System.Drawing.Point(556, 72);
             this.btnSimular.Name = "btnSimular";
             this.btnSimular.Size = new System.Drawing.Size(91, 42);
             this.btnSimular.TabIndex = 22;
@@ -143,9 +156,9 @@
             // 
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtTpoLlegColectivos);
-            this.groupBox2.Location = new System.Drawing.Point(196, 37);
+            this.groupBox2.Location = new System.Drawing.Point(196, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(116, 60);
+            this.groupBox2.Size = new System.Drawing.Size(116, 50);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Llegada Coletivos";
@@ -153,7 +166,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(67, 23);
+            this.label7.Location = new System.Drawing.Point(67, 22);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 2;
@@ -161,7 +174,7 @@
             // 
             // txtTpoLlegColectivos
             // 
-            this.txtTpoLlegColectivos.Location = new System.Drawing.Point(19, 19);
+            this.txtTpoLlegColectivos.Location = new System.Drawing.Point(19, 18);
             this.txtTpoLlegColectivos.Name = "txtTpoLlegColectivos";
             this.txtTpoLlegColectivos.Size = new System.Drawing.Size(42, 20);
             this.txtTpoLlegColectivos.TabIndex = 1;
@@ -172,9 +185,9 @@
             // 
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.txtTpoLLeg);
-            this.groupBox3.Location = new System.Drawing.Point(328, 37);
+            this.groupBox3.Location = new System.Drawing.Point(318, 9);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(116, 60);
+            this.groupBox3.Size = new System.Drawing.Size(116, 50);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Llegada Pasajeros";
@@ -182,7 +195,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 23);
+            this.label1.Location = new System.Drawing.Point(67, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 2;
@@ -190,27 +203,118 @@
             // 
             // txtTpoLLeg
             // 
-            this.txtTpoLLeg.Location = new System.Drawing.Point(19, 19);
+            this.txtTpoLLeg.Location = new System.Drawing.Point(19, 18);
             this.txtTpoLLeg.Name = "txtTpoLLeg";
             this.txtTpoLLeg.Size = new System.Drawing.Size(42, 20);
             this.txtTpoLLeg.TabIndex = 1;
             this.txtTpoLLeg.Text = "30";
             this.txtTpoLLeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.txtTpoSubirPasajero);
+            this.groupBox4.Location = new System.Drawing.Point(196, 65);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(153, 50);
+            this.groupBox4.TabIndex = 25;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Tiempo en Subir Pasajeros";
+            // 
+            // txtTpoSubirPasajero
+            // 
+            this.txtTpoSubirPasajero.Location = new System.Drawing.Point(26, 19);
+            this.txtTpoSubirPasajero.Name = "txtTpoSubirPasajero";
+            this.txtTpoSubirPasajero.Size = new System.Drawing.Size(42, 20);
+            this.txtTpoSubirPasajero.TabIndex = 1;
+            this.txtTpoSubirPasajero.Text = "5";
+            this.txtTpoSubirPasajero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(80, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "seg.";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Controls.Add(this.txtTpoEsperaMaximaPasajeros);
+            this.groupBox5.Location = new System.Drawing.Point(355, 65);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(184, 50);
+            this.groupBox5.TabIndex = 26;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Tiempo espera Máxima Pasajeros";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(100, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "min.";
+            // 
+            // txtTpoEsperaMaximaPasajeros
+            // 
+            this.txtTpoEsperaMaximaPasajeros.Location = new System.Drawing.Point(46, 19);
+            this.txtTpoEsperaMaximaPasajeros.Name = "txtTpoEsperaMaximaPasajeros";
+            this.txtTpoEsperaMaximaPasajeros.Size = new System.Drawing.Size(42, 20);
+            this.txtTpoEsperaMaximaPasajeros.TabIndex = 1;
+            this.txtTpoEsperaMaximaPasajeros.Text = "10";
+            this.txtTpoEsperaMaximaPasajeros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label4);
+            this.groupBox6.Controls.Add(this.txtCapacidadColectivos);
+            this.groupBox6.Location = new System.Drawing.Point(440, 9);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(130, 50);
+            this.groupBox6.TabIndex = 27;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Capacidad Coletivos";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(54, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(52, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "pasajeros";
+            // 
+            // txtCapacidadColectivos
+            // 
+            this.txtCapacidadColectivos.Location = new System.Drawing.Point(6, 19);
+            this.txtCapacidadColectivos.Name = "txtCapacidadColectivos";
+            this.txtCapacidadColectivos.Size = new System.Drawing.Size(42, 20);
+            this.txtCapacidadColectivos.TabIndex = 1;
+            this.txtCapacidadColectivos.Text = "40";
+            this.txtCapacidadColectivos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // Ventana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(984, 521);
+            this.ClientSize = new System.Drawing.Size(734, 521);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnSimular);
             this.Controls.Add(this.dgvDatos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label38);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Ventana";
-            this.Text = "Parada Colectivo Córdoba. Argentina";
+            this.Text = "SIMULACIÓN - Parada Colectivo Córdoba ";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
@@ -218,6 +322,12 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,6 +350,15 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtTpoLLeg;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtTpoSubirPasajero;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtTpoEsperaMaximaPasajeros;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtCapacidadColectivos;
     }
 }
 

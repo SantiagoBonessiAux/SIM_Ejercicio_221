@@ -6,3 +6,12 @@ C:\Users\Dicsys\Desktop\Ejericios 221 SIM\Final_SIM_Ejercicio_221\Final_SIM_Ejer
 C:\Users\Dicsys\Desktop\Ejericios 221 SIM\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.csproj.GenerateResource.Cache
 C:\Users\Dicsys\Desktop\Ejericios 221 SIM\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.exe
 C:\Users\Dicsys\Desktop\Ejericios 221 SIM\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.pdb
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\bin\Debug\Final_SIM_Ejercicio_221.exe.config
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.exe
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.pdb
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.csprojResolveAssemblyReference.cache
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.Ventana.resources
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.Properties.Resources.resources
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.csproj.GenerateResource.Cache
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\bin\Debug\Final_SIM_Ejercicio_221.exe
+C:\Users\Dicsys\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\bin\Debug\Final_SIM_Ejercicio_221.pdb
