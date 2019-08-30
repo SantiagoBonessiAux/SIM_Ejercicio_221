@@ -36,6 +36,50 @@ namespace Final_SIM_Ejercicio_221
             Reloj.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDatos.Columns.Add(Reloj);
 
+            DataGridViewTextBoxColumn RndLlegColectivo = new DataGridViewTextBoxColumn();
+            RndLlegColectivo.Name = "rndLlegColectivo";
+            RndLlegColectivo.HeaderText = "RND";
+            RndLlegColectivo.ReadOnly = true;
+            RndLlegColectivo.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(RndLlegColectivo);
+
+            DataGridViewTextBoxColumn TpoLlegColectivo = new DataGridViewTextBoxColumn();
+            TpoLlegColectivo.Name = "tpoLlegColectivo";
+            TpoLlegColectivo.HeaderText = "Tpo LLeg Colectivo";
+            TpoLlegColectivo.ReadOnly = true;
+            TpoLlegColectivo.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(TpoLlegColectivo);
+
+            DataGridViewTextBoxColumn ProxLlegColectivo = new DataGridViewTextBoxColumn();
+            ProxLlegColectivo.Name = "proxLlegColectivo";
+            ProxLlegColectivo.HeaderText = "Prox LLeg Colectivo";
+            ProxLlegColectivo.ReadOnly = true;
+            ProxLlegColectivo.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(ProxLlegColectivo);
+
+            DataGridViewTextBoxColumn RndLlegPasajero = new DataGridViewTextBoxColumn();
+            RndLlegPasajero.Name = "rndLlegPasajero";
+            RndLlegPasajero.HeaderText = "RND";
+            RndLlegPasajero.ReadOnly = true;
+            RndLlegPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(RndLlegPasajero);
+
+            DataGridViewTextBoxColumn TpoLlegPasajero = new DataGridViewTextBoxColumn();
+            TpoLlegPasajero.Name = "tpoLlegPasajero";
+            TpoLlegPasajero.HeaderText = "Tpo LLeg Pasajero";
+            TpoLlegPasajero.ReadOnly = true;
+            TpoLlegPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(TpoLlegPasajero);
+
+            DataGridViewTextBoxColumn ProxLlegPasajero = new DataGridViewTextBoxColumn();
+            ProxLlegPasajero.Name = "proxLlegPasajero";
+            ProxLlegPasajero.HeaderText = "Prox LLeg Pasajero";
+            ProxLlegPasajero.ReadOnly = true;
+            ProxLlegPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(ProxLlegPasajero);
+
+
+
 
 
         }

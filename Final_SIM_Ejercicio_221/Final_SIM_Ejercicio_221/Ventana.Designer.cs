@@ -139,7 +139,7 @@
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 10;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(700, 380);
+            this.dgvDatos.Size = new System.Drawing.Size(710, 380);
             this.dgvDatos.TabIndex = 20;
             // 
             // btnSimular
