@@ -50,25 +50,27 @@ namespace Final_SIM_Ejercicio_221
         }
 
         /// <summary>
-        /// /// Tiempo llegada colectivos, distribucion exponencial.
+        /// Tiempo llegada colectivos, distribucion exponencial.
+        /// Donde promedio = 1/lambda
         /// </summary>
         /// <param name="rnd"></param>
         /// <param name="tpoPromedio"></param>
         /// <returns></returns>
         public double getTiempoLlegadaColectivo(double rnd, double tpoPromedio)
         {
-            return 0;
+            return Math.Round((-(tpoPromedio) * Math.Log(rnd)), 2);
         }
 
         /// <summary>
         /// Tiempo llegada pasajeros, distribucion exponencial.
+        /// Donde promedio = 1/lambda
         /// </summary>
         /// <param name="rnd"></param>
         /// <param name="tpoPromedio"></param>
         /// <returns></returns>
         public double getTiempoLlegadaPasajero(double rnd, double tpoPromedio)
         {
-            return 0;
+            return Math.Round((-(tpoPromedio) * Math.Log(rnd)), 2); 
         }
 
     }

@@ -43,7 +43,7 @@
             this.txtTpoLlegColectivos = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTpoLLeg = new System.Windows.Forms.TextBox();
+            this.txtTpoLLegPasajeros = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTpoSubirPasajero = new System.Windows.Forms.TextBox();
@@ -158,15 +158,15 @@
             this.groupBox2.Controls.Add(this.txtTpoLlegColectivos);
             this.groupBox2.Location = new System.Drawing.Point(196, 9);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(116, 50);
+            this.groupBox2.Size = new System.Drawing.Size(153, 50);
             this.groupBox2.TabIndex = 23;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Llegada Coletivos";
+            this.groupBox2.Text = "Promedio Llegada Coletivos";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(67, 22);
+            this.label7.Location = new System.Drawing.Point(87, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(26, 13);
             this.label7.TabIndex = 2;
@@ -174,7 +174,7 @@
             // 
             // txtTpoLlegColectivos
             // 
-            this.txtTpoLlegColectivos.Location = new System.Drawing.Point(19, 18);
+            this.txtTpoLlegColectivos.Location = new System.Drawing.Point(39, 19);
             this.txtTpoLlegColectivos.Name = "txtTpoLlegColectivos";
             this.txtTpoLlegColectivos.Size = new System.Drawing.Size(42, 20);
             this.txtTpoLlegColectivos.TabIndex = 1;
@@ -184,31 +184,31 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.txtTpoLLeg);
-            this.groupBox3.Location = new System.Drawing.Point(318, 9);
+            this.groupBox3.Controls.Add(this.txtTpoLLegPasajeros);
+            this.groupBox3.Location = new System.Drawing.Point(355, 9);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(116, 50);
+            this.groupBox3.Size = new System.Drawing.Size(159, 50);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Llegada Pasajeros";
+            this.groupBox3.Text = "Promedio Llegada Pasajeros";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 22);
+            this.label1.Location = new System.Drawing.Point(94, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "seg.";
             // 
-            // txtTpoLLeg
+            // txtTpoLLegPasajeros
             // 
-            this.txtTpoLLeg.Location = new System.Drawing.Point(19, 18);
-            this.txtTpoLLeg.Name = "txtTpoLLeg";
-            this.txtTpoLLeg.Size = new System.Drawing.Size(42, 20);
-            this.txtTpoLLeg.TabIndex = 1;
-            this.txtTpoLLeg.Text = "30";
-            this.txtTpoLLeg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTpoLLegPasajeros.Location = new System.Drawing.Point(46, 19);
+            this.txtTpoLLegPasajeros.Name = "txtTpoLLegPasajeros";
+            this.txtTpoLLegPasajeros.Size = new System.Drawing.Size(42, 20);
+            this.txtTpoLLegPasajeros.TabIndex = 1;
+            this.txtTpoLLegPasajeros.Text = "30";
+            this.txtTpoLLegPasajeros.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox4
             // 
@@ -272,7 +272,7 @@
             // 
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.txtCapacidadColectivos);
-            this.groupBox6.Location = new System.Drawing.Point(440, 9);
+            this.groupBox6.Location = new System.Drawing.Point(520, 9);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(130, 50);
             this.groupBox6.TabIndex = 27;
@@ -349,7 +349,7 @@
         private System.Windows.Forms.TextBox txtTpoLlegColectivos;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtTpoLLeg;
+        private System.Windows.Forms.TextBox txtTpoLLegPasajeros;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTpoSubirPasajero;

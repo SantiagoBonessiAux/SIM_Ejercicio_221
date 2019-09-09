@@ -142,7 +142,6 @@ namespace Final_SIM_Ejercicio_221
             dgvDatos.Columns.Add(PorcColectSinSubirPasaj);
 
             dgvDatos.Columns["reloj"].DefaultCellStyle.BackColor = Color.LightBlue;
-            dgvDatos.Columns["proxLlegTrab"].DefaultCellStyle.BackColor = Color.LightBlue;
 
             dgvDatos.Columns["proxLlegColectivo"].DefaultCellStyle.BackColor = Color.LightBlue;
 
@@ -165,20 +164,64 @@ namespace Final_SIM_Ejercicio_221
             int ultimasHoras = int.Parse(txtUltHoras.Text);
             Double ultimosMinutos = ultimasHoras * 60;
 
+            double promLlegColectivos = double.Parse(this.txtTpoLlegColectivos.Text);
+            Int64 capacidadMaximaColectivo = Int64.Parse(this.txtCapacidadColectivos.Text);
+            double promLlegPasajeros = Math.Round(double.Parse(this.txtTpoLLegPasajeros.Text)/60, 2);
+            double tpoAscensoPasajeros = Math.Round(double.Parse(this.txtTpoSubirPasajero.Text)/60, 2);
+            double tpoEsperaMaximaPasajeros = double.Parse(this.txtTpoEsperaMaximaPasajeros.Text);
+
             int i = 0;
 
-            //while (ve.reloj <= tiempoFinal)
-            //{
-            //    ve.fila = i;
+            Random rnd = new Random();
+            Simulacion sim = new Simulacion();
+            VectorEstado ve = new VectorEstado();
+
+            while (ve.reloj <= tiempoFinal)
+            {
+                ve.fila = i;
+
+                if(i == 0)
+                {
+                    ve.evento = "INICIO";
+                    ve.reloj = 0;
+
+                    ve.rndLlegColectivo = Math.Round(rnd.NextDouble(), 2);
+                    ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
+                    ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
+
+                    ve.rndLlegPasajero = Math.Round(rnd.NextDouble(), 2);
+                    ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
+                    ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
+
+                }
+                else
+                {
+
+                }
 
 
 
-            //    i++;
-            //}// fin del while
+
+                double auxUltMin = tiempoFinal - ultimosMinutos;
+                //if (ve.reloj >= auxUltMin)
+                //{
+                    dgvDatos.Rows.Add(
+                    ve.evento, ve.reloj, ve.rndLlegColectivo, ve.tpoLlegColectivo, ve.proxLlegColectivo,
+                    ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero
+                    
+                    );
 
 
+                //}
 
+                //TO DO: PRUEBAS INICIALES
+                if ( i == 1 )
+                {
+                    break;
+                }
 
+                i++;
+            }// fin del while
 
         }// fin btnSimular
 
