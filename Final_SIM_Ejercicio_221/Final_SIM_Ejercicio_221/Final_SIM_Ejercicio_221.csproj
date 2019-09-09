@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Simulacion.cs" />
+    <Compile Include="VectorEstado.cs" />
     <Compile Include="Ventana.cs">
       <SubType>Form</SubType>
     </Compile>

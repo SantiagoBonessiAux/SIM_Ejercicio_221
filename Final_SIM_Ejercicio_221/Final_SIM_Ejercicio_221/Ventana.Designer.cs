@@ -45,8 +45,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtTpoLLeg = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtTpoSubirPasajero = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtTpoSubirPasajero = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTpoEsperaMaximaPasajeros = new System.Windows.Forms.TextBox();
@@ -219,16 +219,7 @@
             this.groupBox4.Size = new System.Drawing.Size(153, 50);
             this.groupBox4.TabIndex = 25;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Tiempo en Subir Pasajeros";
-            // 
-            // txtTpoSubirPasajero
-            // 
-            this.txtTpoSubirPasajero.Location = new System.Drawing.Point(26, 19);
-            this.txtTpoSubirPasajero.Name = "txtTpoSubirPasajero";
-            this.txtTpoSubirPasajero.Size = new System.Drawing.Size(42, 20);
-            this.txtTpoSubirPasajero.TabIndex = 1;
-            this.txtTpoSubirPasajero.Text = "5";
-            this.txtTpoSubirPasajero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.groupBox4.Text = "Tiempo Ascenso Pasajeros";
             // 
             // label2
             // 
@@ -238,6 +229,15 @@
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "seg.";
+            // 
+            // txtTpoSubirPasajero
+            // 
+            this.txtTpoSubirPasajero.Location = new System.Drawing.Point(26, 19);
+            this.txtTpoSubirPasajero.Name = "txtTpoSubirPasajero";
+            this.txtTpoSubirPasajero.Size = new System.Drawing.Size(42, 20);
+            this.txtTpoSubirPasajero.TabIndex = 1;
+            this.txtTpoSubirPasajero.Text = "5";
+            this.txtTpoSubirPasajero.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox5
             // 

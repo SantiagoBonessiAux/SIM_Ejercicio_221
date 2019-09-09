@@ -78,9 +78,75 @@ namespace Final_SIM_Ejercicio_221
             ProxLlegPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDatos.Columns.Add(ProxLlegPasajero);
 
+            DataGridViewTextBoxColumn TpoAscensoPasajero = new DataGridViewTextBoxColumn();
+            TpoAscensoPasajero.Name = "tpoAscensoPasajero";
+            TpoAscensoPasajero.HeaderText = "Tpo Ascen Pasajero";
+            TpoAscensoPasajero.ReadOnly = true;
+            TpoAscensoPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(TpoAscensoPasajero);
 
+            DataGridViewTextBoxColumn FinAscensoPasajero = new DataGridViewTextBoxColumn();
+            FinAscensoPasajero.Name = "finAscensoPasajero";
+            FinAscensoPasajero.HeaderText = "Fin Ascen Pasajero";
+            FinAscensoPasajero.ReadOnly = true;
+            TpoAscensoPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(FinAscensoPasajero);
 
+            DataGridViewTextBoxColumn ColaParada = new DataGridViewTextBoxColumn();
+            ColaParada.Name = "colaParada";
+            ColaParada.HeaderText = "Cola Parada";
+            ColaParada.ReadOnly = true;
+            ColaParada.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(ColaParada);
 
+            DataGridViewTextBoxColumn MaxColaParada = new DataGridViewTextBoxColumn();
+            MaxColaParada.Name = "maxColaParada";
+            MaxColaParada.HeaderText = "Max Cola Parada";
+            MaxColaParada.ReadOnly = true;
+            MaxColaParada.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(MaxColaParada);
+
+            DataGridViewTextBoxColumn CantPasajerosRetirados = new DataGridViewTextBoxColumn();
+            CantPasajerosRetirados.Name = "cantPasajerosRetirados";
+            CantPasajerosRetirados.HeaderText = "Cant Pasajeros Retirados";
+            CantPasajerosRetirados.ReadOnly = true;
+            CantPasajerosRetirados.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(CantPasajerosRetirados);
+
+            DataGridViewTextBoxColumn ColaColectivos = new DataGridViewTextBoxColumn();
+            ColaColectivos.Name = "colaColectivos";
+            ColaColectivos.HeaderText = "Cola Colect";
+            ColaColectivos.ReadOnly = true;
+            ColaColectivos.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(ColaColectivos);
+
+            DataGridViewTextBoxColumn TotalColectCola = new DataGridViewTextBoxColumn();
+            TotalColectCola.Name = "totaColectCola";
+            TotalColectCola.HeaderText = "Tot Colect Cola";
+            TotalColectCola.ReadOnly = true;
+            TotalColectCola.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(TotalColectCola);
+
+            DataGridViewTextBoxColumn CantColectSinSubirPasaj = new DataGridViewTextBoxColumn();
+            CantColectSinSubirPasaj.Name = "cantColectSinSubirPasaje";
+            CantColectSinSubirPasaj.HeaderText = "Tot Colect Sin Subir Pasaj";
+            CantColectSinSubirPasaj.ReadOnly = true;
+            CantColectSinSubirPasaj.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(CantColectSinSubirPasaj);
+
+            DataGridViewTextBoxColumn PorcColectSinSubirPasaj = new DataGridViewTextBoxColumn();
+            PorcColectSinSubirPasaj.Name = "porcColectSinSubirPasaje";
+            PorcColectSinSubirPasaj.HeaderText = "Porc Colect Sin Subir Pasaj";
+            PorcColectSinSubirPasaj.ReadOnly = true;
+            PorcColectSinSubirPasaj.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(PorcColectSinSubirPasaj);
+
+            dgvDatos.Columns["reloj"].DefaultCellStyle.BackColor = Color.LightBlue;
+            dgvDatos.Columns["proxLlegTrab"].DefaultCellStyle.BackColor = Color.LightBlue;
+
+            dgvDatos.Columns["proxLlegColectivo"].DefaultCellStyle.BackColor = Color.LightBlue;
+
+            dgvDatos.Columns["proxLlegPasajero"].DefaultCellStyle.BackColor = Color.LightBlue;
 
         }
 
