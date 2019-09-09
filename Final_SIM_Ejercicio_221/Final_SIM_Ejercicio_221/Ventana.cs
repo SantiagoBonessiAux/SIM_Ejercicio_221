@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -196,8 +197,43 @@ namespace Final_SIM_Ejercicio_221
                 }
                 else
                 {
+                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero);
+                    ve.evento = EventoTiempo[0].ToString();
 
-                }
+                    switch (EventoTiempo[0].ToString())
+                    {
+                        case "Llegada Colectivo":
+                            ve.evento = "Llegada Colectivo";
+                            ve.reloj = ve.proxLlegColectivo;
+
+                            ve.rndLlegColectivo = Math.Round(rnd.NextDouble(), 2);
+                            ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
+                            ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
+
+                            break;
+                        case "Llegada Pasajero":
+                            ve.evento = "Llegada Pasajero";
+                            ve.reloj = ve.proxLlegPasajero;
+
+                            ve.rndLlegPasajero = Math.Round(rnd.NextDouble(), 2);
+                            ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
+                            ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
+
+                            break;
+                        case "3":
+                            break;
+                        case "4":
+                            break;
+                        case "5":
+                            break;
+                        default:
+                            break;
+
+                    }
+
+
+
+                    }
 
 
 
@@ -215,7 +251,7 @@ namespace Final_SIM_Ejercicio_221
                 //}
 
                 //TO DO: PRUEBAS INICIALES
-                if ( i == 1 )
+                if ( i == 5 )
                 {
                     break;
                 }
