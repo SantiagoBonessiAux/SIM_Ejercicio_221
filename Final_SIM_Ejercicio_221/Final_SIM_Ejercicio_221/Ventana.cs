@@ -241,13 +241,14 @@ namespace Final_SIM_Ejercicio_221
                             ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                             ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
 
+                            ve.colaParada++;
+
                             if (ve.estadoParada == "CARGANDO")
                             {
                                 
                             }
 
                             ve.estadoParada = "ESPERANDO";
-                            ve.colaParada++;
 
                             break;
                         case "Fin Ascenso Pasajero":
@@ -265,6 +266,7 @@ namespace Final_SIM_Ejercicio_221
                             {
                                 ve.estadoParada = "LIBRE";
                                 ve.proxSalidaColectivo = ve.reloj;
+                                ve.proxFinAscensoPasajero = 0;
                             }
                             break;
                         case "Salida Colectivo":
