@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Colectivo.cs" />
+    <Compile Include="Pasajero.cs" />
     <Compile Include="Simulacion.cs" />
     <Compile Include="VectorEstado.cs" />
     <Compile Include="Ventana.cs">
