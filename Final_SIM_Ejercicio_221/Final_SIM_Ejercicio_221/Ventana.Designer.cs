@@ -66,7 +66,7 @@
             // 
             this.label38.AutoSize = true;
             this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(12, 9);
+            this.label38.Location = new System.Drawing.Point(12, 3);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(139, 25);
             this.label38.TabIndex = 18;
@@ -79,16 +79,16 @@
             this.groupBox1.Controls.Add(this.label30);
             this.groupBox1.Controls.Add(this.txtHorasSim);
             this.groupBox1.Controls.Add(this.lblHsSim);
-            this.groupBox1.Location = new System.Drawing.Point(12, 37);
+            this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(178, 78);
+            this.groupBox1.Size = new System.Drawing.Size(182, 68);
             this.groupBox1.TabIndex = 19;
             this.groupBox1.TabStop = false;
             // 
             // lblHS
             // 
             this.lblHS.AutoSize = true;
-            this.lblHS.Location = new System.Drawing.Point(147, 47);
+            this.lblHS.Location = new System.Drawing.Point(153, 40);
             this.lblHS.Name = "lblHS";
             this.lblHS.Size = new System.Drawing.Size(20, 13);
             this.lblHS.TabIndex = 5;
@@ -96,7 +96,7 @@
             // 
             // txtUltHoras
             // 
-            this.txtUltHoras.Location = new System.Drawing.Point(90, 44);
+            this.txtUltHoras.Location = new System.Drawing.Point(96, 37);
             this.txtUltHoras.Name = "txtUltHoras";
             this.txtUltHoras.Size = new System.Drawing.Size(51, 20);
             this.txtUltHoras.TabIndex = 4;
@@ -105,7 +105,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(4, 47);
+            this.label30.Location = new System.Drawing.Point(10, 40);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(80, 13);
             this.label30.TabIndex = 3;
@@ -113,7 +113,7 @@
             // 
             // txtHorasSim
             // 
-            this.txtHorasSim.Location = new System.Drawing.Point(102, 16);
+            this.txtHorasSim.Location = new System.Drawing.Point(108, 11);
             this.txtHorasSim.Name = "txtHorasSim";
             this.txtHorasSim.Size = new System.Drawing.Size(68, 20);
             this.txtHorasSim.TabIndex = 2;
@@ -122,7 +122,7 @@
             // lblHsSim
             // 
             this.lblHsSim.AutoSize = true;
-            this.lblHsSim.Location = new System.Drawing.Point(4, 19);
+            this.lblHsSim.Location = new System.Drawing.Point(10, 14);
             this.lblHsSim.Name = "lblHsSim";
             this.lblHsSim.Size = new System.Drawing.Size(92, 13);
             this.lblHsSim.TabIndex = 1;
@@ -134,19 +134,19 @@
             this.dgvDatos.AllowUserToDeleteRows = false;
             this.dgvDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Location = new System.Drawing.Point(12, 129);
+            this.dgvDatos.Location = new System.Drawing.Point(12, 105);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 10;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(710, 380);
+            this.dgvDatos.Size = new System.Drawing.Size(1084, 413);
             this.dgvDatos.TabIndex = 20;
             // 
             // btnSimular
             // 
-            this.btnSimular.Location = new System.Drawing.Point(556, 72);
+            this.btnSimular.Location = new System.Drawing.Point(1007, 42);
             this.btnSimular.Name = "btnSimular";
-            this.btnSimular.Size = new System.Drawing.Size(91, 42);
+            this.btnSimular.Size = new System.Drawing.Size(91, 45);
             this.btnSimular.TabIndex = 22;
             this.btnSimular.Text = "SIMULAR";
             this.btnSimular.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             // 
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtTpoLlegColectivos);
-            this.groupBox2.Location = new System.Drawing.Point(196, 9);
+            this.groupBox2.Location = new System.Drawing.Point(200, 38);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(153, 50);
             this.groupBox2.TabIndex = 23;
@@ -185,9 +185,9 @@
             // 
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.txtTpoLLegPasajeros);
-            this.groupBox3.Location = new System.Drawing.Point(355, 9);
+            this.groupBox3.Location = new System.Drawing.Point(359, 38);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(159, 50);
+            this.groupBox3.Size = new System.Drawing.Size(158, 50);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Promedio Llegada Pasajeros";
@@ -214,7 +214,7 @@
             // 
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.txtTpoSubirPasajero);
-            this.groupBox4.Location = new System.Drawing.Point(196, 65);
+            this.groupBox4.Location = new System.Drawing.Point(848, 38);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(153, 50);
             this.groupBox4.TabIndex = 25;
@@ -243,9 +243,9 @@
             // 
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Controls.Add(this.txtTpoEsperaMaximaPasajeros);
-            this.groupBox5.Location = new System.Drawing.Point(355, 65);
+            this.groupBox5.Location = new System.Drawing.Point(656, 38);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(184, 50);
+            this.groupBox5.Size = new System.Drawing.Size(186, 50);
             this.groupBox5.TabIndex = 26;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Tiempo espera Máxima Pasajeros";
@@ -253,7 +253,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(100, 24);
+            this.label3.Location = new System.Drawing.Point(106, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(26, 13);
             this.label3.TabIndex = 3;
@@ -261,7 +261,7 @@
             // 
             // txtTpoEsperaMaximaPasajeros
             // 
-            this.txtTpoEsperaMaximaPasajeros.Location = new System.Drawing.Point(46, 19);
+            this.txtTpoEsperaMaximaPasajeros.Location = new System.Drawing.Point(52, 19);
             this.txtTpoEsperaMaximaPasajeros.Name = "txtTpoEsperaMaximaPasajeros";
             this.txtTpoEsperaMaximaPasajeros.Size = new System.Drawing.Size(42, 20);
             this.txtTpoEsperaMaximaPasajeros.TabIndex = 1;
@@ -272,9 +272,9 @@
             // 
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.txtCapacidadColectivos);
-            this.groupBox6.Location = new System.Drawing.Point(520, 9);
+            this.groupBox6.Location = new System.Drawing.Point(523, 38);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(130, 50);
+            this.groupBox6.Size = new System.Drawing.Size(127, 50);
             this.groupBox6.TabIndex = 27;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Capacidad Coletivos";
@@ -282,7 +282,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(54, 22);
+            this.label4.Location = new System.Drawing.Point(66, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 2;
@@ -290,7 +290,7 @@
             // 
             // txtCapacidadColectivos
             // 
-            this.txtCapacidadColectivos.Location = new System.Drawing.Point(6, 19);
+            this.txtCapacidadColectivos.Location = new System.Drawing.Point(18, 20);
             this.txtCapacidadColectivos.Name = "txtCapacidadColectivos";
             this.txtCapacidadColectivos.Size = new System.Drawing.Size(42, 20);
             this.txtCapacidadColectivos.TabIndex = 1;
@@ -302,7 +302,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(734, 521);
+            this.ClientSize = new System.Drawing.Size(1108, 530);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);

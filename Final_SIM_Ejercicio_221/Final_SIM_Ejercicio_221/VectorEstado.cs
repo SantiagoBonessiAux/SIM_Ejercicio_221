@@ -23,13 +23,14 @@ namespace Final_SIM_Ejercicio_221
         public double proxLlegPasajero { get; set; }
 
         public double tpoAscensoPasajero { get; set; }
-        public double finAscensoPasajero { get; set; }
-
+        public double proxFinAscensoPasajero { get; set; }
+        public string estadoParada { get; set; }
         public Int64 colaParada { get; set; }
         public Int64 maxColaParada { get; set; }
         public Int64 cantPasajerosRetirados { get; set;}
         public Int64 colaColectivos { get; set; }
         public Int64 totColectCola { get; set; }
+        public double proxSalidaColectivo { get; set; }
         public Int64 cantColectSinSubirPasaj { get; set; } 
         public double porcColectSinSubirPasaj { get; set; }
 
@@ -47,7 +48,7 @@ namespace Final_SIM_Ejercicio_221
             this.proxLlegPasajero = proxLlegPasajero;
 
             this.tpoAscensoPasajero = tpoAscensoPasajero;
-            this.finAscensoPasajero = finAscensoPasajero;
+            this.proxFinAscensoPasajero = proxFinAscensoPasajero;
 
             this.colaParada = colaParada;
             this.maxColaParada = maxColaParada;
@@ -56,6 +57,8 @@ namespace Final_SIM_Ejercicio_221
 
             this.colaColectivos = colaColectivos;
             this.totColectCola = totColectCola;
+            this.proxSalidaColectivo = proxSalidaColectivo;
+
             this.cantColectSinSubirPasaj = cantColectSinSubirPasaj;
             this.porcColectSinSubirPasaj = porcColectSinSubirPasaj;
         }

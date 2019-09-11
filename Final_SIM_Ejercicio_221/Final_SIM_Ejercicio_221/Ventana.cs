@@ -86,12 +86,19 @@ namespace Final_SIM_Ejercicio_221
             TpoAscensoPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDatos.Columns.Add(TpoAscensoPasajero);
 
-            DataGridViewTextBoxColumn FinAscensoPasajero = new DataGridViewTextBoxColumn();
-            FinAscensoPasajero.Name = "finAscensoPasajero";
-            FinAscensoPasajero.HeaderText = "Fin Ascen Pasajero";
-            FinAscensoPasajero.ReadOnly = true;
+            DataGridViewTextBoxColumn ProxFinAscensoPasajero = new DataGridViewTextBoxColumn();
+            ProxFinAscensoPasajero.Name = "proxFinAscensoPasajero";
+            ProxFinAscensoPasajero.HeaderText = "Prox Fin Ascen Pasajero";
+            ProxFinAscensoPasajero.ReadOnly = true;
             TpoAscensoPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
-            dgvDatos.Columns.Add(FinAscensoPasajero);
+            dgvDatos.Columns.Add(ProxFinAscensoPasajero);
+
+            DataGridViewTextBoxColumn EstadoParada = new DataGridViewTextBoxColumn();
+            EstadoParada.Name = "estadoParada";
+            EstadoParada.HeaderText = "Estado Parada";
+            EstadoParada.ReadOnly = true;
+            EstadoParada.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(EstadoParada);
 
             DataGridViewTextBoxColumn ColaParada = new DataGridViewTextBoxColumn();
             ColaParada.Name = "colaParada";
@@ -147,7 +154,8 @@ namespace Final_SIM_Ejercicio_221
             dgvDatos.Columns["proxLlegColectivo"].DefaultCellStyle.BackColor = Color.LightBlue;
 
             dgvDatos.Columns["proxLlegPasajero"].DefaultCellStyle.BackColor = Color.LightBlue;
-
+            
+            dgvDatos.Columns["proxFinAscensoPasajero"].DefaultCellStyle.BackColor = Color.LightBlue;
         }
 
         private void btnSimular_Click(object sender, EventArgs e)
@@ -194,10 +202,11 @@ namespace Final_SIM_Ejercicio_221
                     ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                     ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
 
+                    ve.estadoParada = "LIBRE";
                 }
                 else
                 {
-                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero);
+                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero, ve.proxSalidaColectivo);
                     ve.evento = EventoTiempo[0].ToString();
 
                     switch (EventoTiempo[0].ToString())
@@ -210,6 +219,19 @@ namespace Final_SIM_Ejercicio_221
                             ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
                             ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
 
+                            //SI HAY PASAJEROS ESPERANDO EMPIEZA A CARGAR
+                            if (ve.colaParada > 0)
+                            {
+                                ve.estadoParada = "CARGANDO";
+                                ve.proxFinAscensoPasajero = ve.reloj + tpoAscensoPasajeros;
+                            }
+                            //SI NO HAY PASAJEROS ESERANDO SE VA SIN SUBIR PASAJEROS
+                            else
+                            {
+                                ve.cantColectSinSubirPasaj++;
+                            }
+                            
+
                             break;
                         case "Llegada Pasajero":
                             ve.evento = "Llegada Pasajero";
@@ -219,12 +241,41 @@ namespace Final_SIM_Ejercicio_221
                             ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                             ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
 
+                            if (ve.estadoParada == "CARGANDO")
+                            {
+                                
+                            }
+
+                            ve.estadoParada = "ESPERANDO";
+                            ve.colaParada++;
+
                             break;
-                        case "3":
+                        case "Fin Ascenso Pasajero":
+                            ve.evento = "Fin Ascenso Pasajero";
+                            ve.reloj = ve.proxFinAscensoPasajero;
+                            ve.colaParada--;
+
+                            //SI SIGUEN PASAJEROS ESPERANDO; VUELVE A CALCULAR EL PROXIMO ASCENSO, SINO SE VA EL COLECTIVO
+                            //TO DO: FALTA CONTROLAR CAPACIDAD MAXIMA DE COLECTIVOS.
+                            if (ve.colaParada > 0)
+                            {
+                                ve.proxFinAscensoPasajero = ve.reloj + tpoAscensoPasajeros;
+                            }
+                            else if(ve.colaParada == 0)
+                            {
+                                ve.estadoParada = "LIBRE";
+                                ve.proxSalidaColectivo = ve.reloj;
+                            }
                             break;
-                        case "4":
+                        case "Salida Colectivo":
+
+                            ve.evento = "Salida Colectivo";
+                            ve.reloj = ve.proxSalidaColectivo;
+
                             break;
-                        case "5":
+                        case "Interrupcion Espera Pasajero":
+                            ve.evento = "Interrupcion Espera Pasajero";
+                            
                             break;
                         default:
                             break;
@@ -233,7 +284,7 @@ namespace Final_SIM_Ejercicio_221
 
 
 
-                    }
+              }
 
 
 
@@ -242,16 +293,28 @@ namespace Final_SIM_Ejercicio_221
                 //if (ve.reloj >= auxUltMin)
                 //{
                     dgvDatos.Rows.Add(
-                    ve.evento, ve.reloj, ve.rndLlegColectivo, ve.tpoLlegColectivo, ve.proxLlegColectivo,
-                    ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero
+                    ve.evento, ve.reloj, 
+                    //Legada colectivos
+                    ve.rndLlegColectivo, ve.tpoLlegColectivo, ve.proxLlegColectivo,
+                    //Llegada pasajeros
+                    ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero,
+                    //Ascenso pasajeros y fin ascenso, donde fin ascenso inicia salida de colectivo
+                    ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero, 
+                    //Estado de la parada, Cola de pasajeros, y max cola de pasajeros en la parada
+                    ve.estadoParada, ve.colaParada, ve.maxColaParada,
+                    //Cantidad pasajeros que se van 
+                    ve.cantPasajerosRetirados, 
+                    //Cola de colectivos en la parada
+                    ve.colaColectivos, ve.totColectCola,
+                    //Cantidad pasajeros que se van por interrupcion
+                    ve.cantColectSinSubirPasaj, ve.porcColectSinSubirPasaj
                     
                     );
-
 
                 //}
 
                 //TO DO: PRUEBAS INICIALES
-                if ( i == 5 )
+                if ( i == 15 )
                 {
                     break;
                 }
