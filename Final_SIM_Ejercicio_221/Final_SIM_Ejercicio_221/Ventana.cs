@@ -225,7 +225,7 @@ namespace Final_SIM_Ejercicio_221
                         }
                     }
                     
-                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero, ve.proxSalidaColectivo, tiempoMaxEspera);
+                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero, tiempoMaxEspera);
                     ve.evento = EventoTiempo[0].ToString();
 
                     switch (EventoTiempo[0].ToString())
