@@ -165,7 +165,7 @@ namespace Final_SIM_Ejercicio_221
             dgvDatos.Refresh();
             IncializarColumnas();
 
-            var watch = System.Diagnostics.Stopwatch.StartNew();
+            var watch = System.Diagnostics.Stopwatch.StartNew(); // que hace
 
             //Variables de pantalla
             int horasSim = int.Parse(txtHorasSim.Text);
@@ -179,11 +179,16 @@ namespace Final_SIM_Ejercicio_221
             double tpoAscensoPasajeros = Math.Round(double.Parse(this.txtTpoSubirPasajero.Text)/60, 2);
             double tpoEsperaMaximaPasajeros = double.Parse(this.txtTpoEsperaMaximaPasajeros.Text);
 
-            int i = 0;
+            bool banderaSubiendoPasajero = false;            
 
             Random rnd = new Random();
             Simulacion sim = new Simulacion();
             VectorEstado ve = new VectorEstado();
+
+            List<Pasajero> listaPasajeros = new List<Pasajero>();
+
+            int nroPasajero = 0;
+            int i = 0;
 
             while (ve.reloj <= tiempoFinal)
             {
@@ -206,7 +211,21 @@ namespace Final_SIM_Ejercicio_221
                 }
                 else
                 {
-                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero, ve.proxSalidaColectivo);
+                    double tiempoMaxEspera = 0;
+
+                    foreach (var p in listaPasajeros)
+                    {
+                        if (p.estado == "Esperando en Parada" && p.salidaSistema > tiempoMaxEspera)
+                        {
+                            tiempoMaxEspera = p.salidaSistema;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    
+                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero, ve.proxSalidaColectivo, tiempoMaxEspera);
                     ve.evento = EventoTiempo[0].ToString();
 
                     switch (EventoTiempo[0].ToString())
@@ -223,7 +242,8 @@ namespace Final_SIM_Ejercicio_221
                             if (ve.colaParada > 0)
                             {
                                 ve.estadoParada = "CARGANDO";
-                                ve.proxFinAscensoPasajero = ve.reloj + tpoAscensoPasajeros;
+                                ve.proxFinAscensoPasajero = ve.reloj + tpoAscensoPasajeros; //proximo fin ascenso pasajero 
+                                banderaSubiendoPasajero = true;
                             }
                             //SI NO HAY PASAJEROS ESERANDO SE VA SIN SUBIR PASAJEROS
                             else
@@ -237,27 +257,46 @@ namespace Final_SIM_Ejercicio_221
                             ve.evento = "Llegada Pasajero";
                             ve.reloj = ve.proxLlegPasajero;
 
+                            Pasajero pasaj = new Pasajero();
+
                             ve.rndLlegPasajero = Math.Round(rnd.NextDouble(), 2);
                             ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                             ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
+                            
+                            // datos pasajero
+                            pasaj.ID = nroPasajero + 1;
+                            pasaj.ingresoSistema = ve.reloj;
+                            pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros;
 
                             ve.colaParada++;
 
                             if (ve.estadoParada == "CARGANDO")
                             {
+                                pasaj.estado = "Esperando en parada";
+                                ve.colaParada++;
                                 
                             }
 
-                            ve.estadoParada = "ESPERANDO";
+                            ve.estadoParada = "ESPERANDO"; //no existe este estado
+
 
                             break;
+
                         case "Fin Ascenso Pasajero":
                             ve.evento = "Fin Ascenso Pasajero";
                             ve.reloj = ve.proxFinAscensoPasajero;
                             ve.colaParada--;
+                            capacidadMaximaColectivo--;
+                            ve.cantPasajerosSubidos++;
 
-                            //SI SIGUEN PASAJEROS ESPERANDO; VUELVE A CALCULAR EL PROXIMO ASCENSO, SINO SE VA EL COLECTIVO
+                            
                             //TO DO: FALTA CONTROLAR CAPACIDAD MAXIMA DE COLECTIVOS.
+                            if (capacidadMaximaColectivo == 0)
+                            {
+                                ve.estadoParada = "Libre";
+
+                            }
+                            //SI SIGUEN PASAJEROS ESPERANDO; VUELVE A CALCULAR EL PROXIMO ASCENSO, SINO SE VA EL COLECTIVO
                             if (ve.colaParada > 0)
                             {
                                 ve.proxFinAscensoPasajero = ve.reloj + tpoAscensoPasajeros;
@@ -277,6 +316,7 @@ namespace Final_SIM_Ejercicio_221
                             break;
                         case "Interrupcion Espera Pasajero":
                             ve.evento = "Interrupcion Espera Pasajero";
+                            
                             
                             break;
                         default:
