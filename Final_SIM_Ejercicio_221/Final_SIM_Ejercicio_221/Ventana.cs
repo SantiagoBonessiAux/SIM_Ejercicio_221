@@ -186,8 +186,10 @@ namespace Final_SIM_Ejercicio_221
             VectorEstado ve = new VectorEstado();
 
             List<Pasajero> listaPasajeros = new List<Pasajero>();
+            List<Colectivo> listaColectivos = new List<Colectivo>();
 
             int nroPasajero = 0;
+            int nroColectivo = 0;
             int i = 0;
 
             while (ve.reloj <= tiempoFinal)
@@ -234,9 +236,16 @@ namespace Final_SIM_Ejercicio_221
                             ve.evento = "Llegada Colectivo";
                             ve.reloj = ve.proxLlegColectivo;
 
+                            Colectivo colect = new Colectivo();
+
                             ve.rndLlegColectivo = Math.Round(rnd.NextDouble(), 2);
                             ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
                             ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
+
+                            //datos colectivo
+                            nroColectivo++;
+                            colect.ID = nroColectivo;
+                            colect.estado = "ESPERANDO EN COLA"; // Estado por defecto
 
                             //SI HAY PASAJEROS ESPERANDO EMPIEZA A CARGAR
                             if (ve.colaParada > 0)
@@ -245,8 +254,7 @@ namespace Final_SIM_Ejercicio_221
                                 ve.proxFinAscensoPasajero = ve.reloj + tpoAscensoPasajeros; //proximo fin ascenso pasajero 
                                 banderaSubiendoPasajero = true;
                             }
-                            //SI NO HAY PASAJEROS ESERANDO SE VA SIN SUBIR PASAJEROS
-                            else
+                            else //SI NO HAY PASAJEROS ESERANDO SE VA SIN SUBIR PASAJEROS
                             {
                                 ve.cantColectSinSubirPasaj++;
                             }
@@ -257,29 +265,34 @@ namespace Final_SIM_Ejercicio_221
                             ve.evento = "Llegada Pasajero";
                             ve.reloj = ve.proxLlegPasajero;
 
-                            Pasajero pasaj = new Pasajero();
+                            Pasajero pasaj = new Pasajero();                            
 
                             ve.rndLlegPasajero = Math.Round(rnd.NextDouble(), 2);
                             ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                             ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
-                            
+
                             // datos pasajero
-                            pasaj.ID = nroPasajero + 1;
+                            nroPasajero++;
+                            pasaj.ID = nroPasajero;
+                            pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
                             pasaj.ingresoSistema = ve.reloj;
                             pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros;
 
+                            listaPasajeros.Add(pasaj);
+
                             ve.colaParada++;
 
-                            if (ve.estadoParada == "CARGANDO")
+                            if (ve.colaParada == 0)
                             {
-                                pasaj.estado = "Esperando en parada";
-                                ve.colaParada++;
-                                
+                                ve.estadoParada = "OCUPADA"; // la parada tiene pasajeros
                             }
 
-                            ve.estadoParada = "ESPERANDO"; //no existe este estado
+                            if (ve.maxColaParada < ve.colaParada)
+                            {
+                                ve.maxColaParada = ve.colaParada; //maxima cantidad de personas en parada de colectivo
+                            }
 
-
+                           
                             break;
 
                         case "Fin Ascenso Pasajero":
@@ -291,9 +304,18 @@ namespace Final_SIM_Ejercicio_221
 
                             
                             //TO DO: FALTA CONTROLAR CAPACIDAD MAXIMA DE COLECTIVOS.
-                            if (capacidadMaximaColectivo == 0)
+                            if (capacidadMaximaColectivo == 0 && ve.colaParada == 0)
                             {
-                                ve.estadoParada = "Libre";
+                                ve.estadoParada = "Libre"; //no hay pasajeros
+                                ve.colaColectivos = 0; //cuando se llena el colectivo y no hay nadie mas en parada, se retiran todos los colectivos que hay en cola parada
+
+                                foreach (var c in listaColectivos)
+                                {
+                                    if (c.estado == "ESPERANDO EN COLA")
+                                    {
+                                        c.estado = "RETIRADO";
+                                    }
+                                }
 
                             }
                             //SI SIGUEN PASAJEROS ESPERANDO; VUELVE A CALCULAR EL PROXIMO ASCENSO, SINO SE VA EL COLECTIVO
