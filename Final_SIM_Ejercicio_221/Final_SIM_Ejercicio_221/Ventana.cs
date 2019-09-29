@@ -208,7 +208,6 @@ namespace Final_SIM_Ejercicio_221
             int nroColectivo = 0;
             int i = 0;
 
-
             /**
             ESTADOS PARADA: LIBRE, OCUPADA, CARGANDO
             ESTADOS PASAJERO: ESPERANDO, SUBIENDO, 
@@ -227,11 +226,11 @@ namespace Final_SIM_Ejercicio_221
 
                     ve.rndLlegColectivo = Math.Round(rnd.NextDouble(), 2);
                     ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
-                    ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
+                    ve.proxLlegColectivo = Math.Round(ve.reloj + ve.tpoLlegColectivo, 2);
 
                     ve.rndLlegPasajero = Math.Round(rnd.NextDouble(), 2);
                     ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
-                    ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
+                    ve.proxLlegPasajero = Math.Round(ve.reloj + ve.tpoLlegPasajero, 2);
 
                     ve.estadoParada = "LIBRE";
                 }
@@ -264,7 +263,7 @@ namespace Final_SIM_Ejercicio_221
 
                             ve.rndLlegColectivo = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
                             ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
-                            ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
+                            ve.proxLlegColectivo = Math.Round(ve.reloj + ve.tpoLlegColectivo, 2);
 
                             //DATOS COLECTIVO
                             Colectivo colect = new Colectivo();
@@ -302,7 +301,7 @@ namespace Final_SIM_Ejercicio_221
 
                             ve.rndLlegPasajero = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
                             ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
-                            ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
+                            ve.proxLlegPasajero = Math.Round(ve.reloj + ve.tpoLlegPasajero, 2);
 
                             ve.colaParada++;
 
