@@ -33,6 +33,7 @@ namespace Final_SIM_Ejercicio_221
         public double proxSalidaColectivo { get; set; }
         public Int64 cantColectSinSubirPasaj { get; set; } 
         public double porcColectSinSubirPasaj { get; set; }
+        public Int64 cantPasajerosSubidos { get; set; }
 
         public VectorEstado()
         {

@@ -264,7 +264,7 @@ namespace Final_SIM_Ejercicio_221
                             ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
                             
                             // datos pasajero
-                            pasaj.ID = nroPasajero + 1;
+                            pasaj.ID = nroPasajero++;
                             pasaj.ingresoSistema = ve.reloj;
                             pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros;
 
@@ -277,7 +277,7 @@ namespace Final_SIM_Ejercicio_221
                                 
                             }
 
-                            ve.estadoParada = "ESPERANDO"; //no existe este estado
+                            ve.estadoParada = "Listo";
 
 
                             break;
