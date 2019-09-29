@@ -144,12 +144,12 @@ namespace Final_SIM_Ejercicio_221
             ColaColectivos.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDatos.Columns.Add(ColaColectivos);
 
-            DataGridViewTextBoxColumn TotalColectCola = new DataGridViewTextBoxColumn();
-            TotalColectCola.Name = "totaColectCola";
-            TotalColectCola.HeaderText = "Tot Colect Cola";
-            TotalColectCola.ReadOnly = true;
-            TotalColectCola.SortMode = DataGridViewColumnSortMode.NotSortable;
-            dgvDatos.Columns.Add(TotalColectCola);
+            DataGridViewTextBoxColumn TotalColectQuePasan = new DataGridViewTextBoxColumn();
+            TotalColectQuePasan.Name = "totaColectQuePasan";
+            TotalColectQuePasan.HeaderText = "Tot Colect Que Pasan";
+            TotalColectQuePasan.ReadOnly = true;
+            TotalColectQuePasan.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(TotalColectQuePasan);
 
             DataGridViewTextBoxColumn CantColectSinSubirPasaj = new DataGridViewTextBoxColumn();
             CantColectSinSubirPasaj.Name = "cantColectSinSubirPasaje";
@@ -266,8 +266,6 @@ namespace Final_SIM_Ejercicio_221
                             ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
                             ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
 
-                            ve.capacidadCargaColect = capacidadMaximaColectivo;
-
                             //DATOS COLECTIVO
                             Colectivo colect = new Colectivo();
                             nroColectivo++;
@@ -279,8 +277,10 @@ namespace Final_SIM_Ejercicio_221
                             //SI HAY PASAJEROS ESPERANDO Y NO HAY COLECTIVOS EMPIEZA A CARGAR 
                             if (ve.colaParada > 0 && ve.estadoParada != "CARGANDO")
                             {
+
                                 colect.estado = "CARGANDO PASAJEROS";
 
+                                ve.capacidadCargaColect = capacidadMaximaColectivo;
                                 ve.estadoParada = "CARGANDO";
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2); //proximo fin ascenso pasajero 
@@ -342,6 +342,7 @@ namespace Final_SIM_Ejercicio_221
                             break;
 
                         case "Fin Ascenso Pasajero":
+
                             ve.evento = "Fin Ascenso Pasajero";
                             ve.reloj = ve.proxFinAscensoPasajero;
                             ve.colaParada--;
@@ -349,7 +350,6 @@ namespace Final_SIM_Ejercicio_221
                             ve.cantPasajerosSubidos++;
                             ve.capacidadCargaColect--;
 
-                            ////TODO: FALTA CONTROLAR CAPACIDAD MAXIMA DE COLECTIVOS.
                             //if (ve.capacidadCargaColect == 0 && ve.colaParada == 0)
                             //{
                             //    ve.totColectQuePasan = ve.totColectQuePasan + ve.colaColectivos; // ya sean los colectivos que se retiran porque no hay mas personas en parada para cargar, como los colectivos que no suben a nadie
@@ -368,18 +368,34 @@ namespace Final_SIM_Ejercicio_221
                             //}
 
                             //SI SIGUEN PASAJEROS ESPERANDO; VUELVE A CALCULAR EL PROXIMO ASCENSO, SINO SE VA EL COLECTIVO
-                            if (ve.colaParada > 0)
+                            if (ve.colaParada > 0 && ve.capacidadCargaColect > 0)
                             {
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2);
                             }
-                            else if(ve.colaParada == 0)
+                            else if (ve.capacidadCargaColect == 0 && ve.colaColectivos > 0 && ve.colaParada > 0)
+                            {
+                                ve.tpoAscensoPasajero = tpoAscensoPasajeros;
+                                ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2);
+
+                                ve.colaColectivos--;
+                                ve.totColectQuePasan++;
+
+                                ve.capacidadCargaColect = capacidadMaximaColectivo;
+
+                            }
+                            else if (ve.capacidadCargaColect == 0 && ve.colaColectivos == 0 && ve.colaParada > 0)
+                            {
+                                ve.estadoParada = "OCUPADA";
+                                ve.tpoAscensoPasajero = 0;
+                                ve.proxFinAscensoPasajero = 0;
+                            }
+                            else if(ve.colaParada == 0 && ve.capacidadCargaColect > 0)
                             {
                                 //SUBIO A TODOS LOS PASAJEROS; Y EL COLECTIVO SE VA CARGADO
                                 ve.estadoParada = "LIBRE";
                                 ve.tpoAscensoPasajero = 0;
                                 ve.proxFinAscensoPasajero = 0;
-
                                 
                                 ve.cantPasajerosTransportados += capacidadMaximaColectivo - ve.capacidadCargaColect;
                                 
