@@ -345,8 +345,8 @@ namespace Final_SIM_Ejercicio_221
 
                             ve.evento = "Fin Ascenso Pasajero";
                             ve.reloj = ve.proxFinAscensoPasajero;
+
                             ve.colaParada--;
-                            
                             ve.cantPasajerosSubidos++;
                             ve.capacidadCargaColect--;
 
@@ -372,8 +372,9 @@ namespace Final_SIM_Ejercicio_221
                             {
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2);
+
                             }
-                            else if (ve.capacidadCargaColect == 0 && ve.colaColectivos > 0 && ve.colaParada > 0)
+                            else if (ve.colaParada > 0 && ve.capacidadCargaColect == 0 && ve.colaColectivos > 0)
                             {
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2);
@@ -384,7 +385,7 @@ namespace Final_SIM_Ejercicio_221
                                 ve.capacidadCargaColect = capacidadMaximaColectivo;
 
                             }
-                            else if (ve.capacidadCargaColect == 0 && ve.colaColectivos == 0 && ve.colaParada > 0)
+                            else if (ve.colaParada > 0 && ve.capacidadCargaColect == 0 && ve.colaColectivos == 0)
                             {
                                 ve.estadoParada = "OCUPADA";
                                 ve.tpoAscensoPasajero = 0;

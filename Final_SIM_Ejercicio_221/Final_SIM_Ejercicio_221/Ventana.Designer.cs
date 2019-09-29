@@ -168,12 +168,12 @@
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 10;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(1293, 466);
+            this.dgvDatos.Size = new System.Drawing.Size(1337, 466);
             this.dgvDatos.TabIndex = 20;
             // 
             // btnSimular
             // 
-            this.btnSimular.Location = new System.Drawing.Point(1036, 31);
+            this.btnSimular.Location = new System.Drawing.Point(1098, 31);
             this.btnSimular.Name = "btnSimular";
             this.btnSimular.Size = new System.Drawing.Size(183, 60);
             this.btnSimular.TabIndex = 22;
@@ -329,7 +329,7 @@
             // chPasajColect
             // 
             this.chPasajColect.AutoSize = true;
-            this.chPasajColect.Location = new System.Drawing.Point(1036, 11);
+            this.chPasajColect.Location = new System.Drawing.Point(1098, 8);
             this.chPasajColect.Name = "chPasajColect";
             this.chPasajColect.Size = new System.Drawing.Size(170, 17);
             this.chPasajColect.TabIndex = 28;
@@ -339,7 +339,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1095, 580);
+            this.label18.Location = new System.Drawing.Point(1139, 580);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(98, 13);
             this.label18.TabIndex = 30;
@@ -348,7 +348,7 @@
             // txtTimeElapsed
             // 
             this.txtTimeElapsed.Enabled = false;
-            this.txtTimeElapsed.Location = new System.Drawing.Point(1199, 577);
+            this.txtTimeElapsed.Location = new System.Drawing.Point(1243, 577);
             this.txtTimeElapsed.Name = "txtTimeElapsed";
             this.txtTimeElapsed.Size = new System.Drawing.Size(106, 20);
             this.txtTimeElapsed.TabIndex = 29;
@@ -381,7 +381,7 @@
             this.groupBox7.Controls.Add(this.label20);
             this.groupBox7.Location = new System.Drawing.Point(12, 577);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(1077, 79);
+            this.groupBox7.Size = new System.Drawing.Size(1121, 79);
             this.groupBox7.TabIndex = 31;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "RESULTADOS";
@@ -389,7 +389,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(1018, 16);
+            this.label24.Location = new System.Drawing.Point(1045, 17);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(50, 13);
             this.label24.TabIndex = 7;
@@ -398,7 +398,7 @@
             // txtRdoColaMaxPasaj
             // 
             this.txtRdoColaMaxPasaj.Enabled = false;
-            this.txtRdoColaMaxPasaj.Location = new System.Drawing.Point(953, 12);
+            this.txtRdoColaMaxPasaj.Location = new System.Drawing.Point(980, 13);
             this.txtRdoColaMaxPasaj.Name = "txtRdoColaMaxPasaj";
             this.txtRdoColaMaxPasaj.Size = new System.Drawing.Size(59, 20);
             this.txtRdoColaMaxPasaj.TabIndex = 1;
@@ -406,7 +406,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(832, 15);
+            this.label20.Location = new System.Drawing.Point(859, 16);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(119, 13);
             this.label20.TabIndex = 0;
@@ -415,7 +415,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(521, 16);
+            this.label5.Location = new System.Drawing.Point(528, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
             this.label5.TabIndex = 10;
@@ -424,7 +424,7 @@
             // txtRdoCantPasajTransp
             // 
             this.txtRdoCantPasajTransp.Enabled = false;
-            this.txtRdoCantPasajTransp.Location = new System.Drawing.Point(458, 13);
+            this.txtRdoCantPasajTransp.Location = new System.Drawing.Point(465, 13);
             this.txtRdoCantPasajTransp.Name = "txtRdoCantPasajTransp";
             this.txtRdoCantPasajTransp.Size = new System.Drawing.Size(59, 20);
             this.txtRdoCantPasajTransp.TabIndex = 9;
@@ -432,7 +432,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(304, 16);
+            this.label6.Location = new System.Drawing.Point(311, 16);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 13);
             this.label6.TabIndex = 8;
@@ -441,7 +441,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(780, 16);
+            this.label8.Location = new System.Drawing.Point(787, 17);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 13;
@@ -450,7 +450,7 @@
             // txtRdoCantPasajRetirados
             // 
             this.txtRdoCantPasajRetirados.Enabled = false;
-            this.txtRdoCantPasajRetirados.Location = new System.Drawing.Point(717, 13);
+            this.txtRdoCantPasajRetirados.Location = new System.Drawing.Point(724, 14);
             this.txtRdoCantPasajRetirados.Name = "txtRdoCantPasajRetirados";
             this.txtRdoCantPasajRetirados.Size = new System.Drawing.Size(59, 20);
             this.txtRdoCantPasajRetirados.TabIndex = 12;
@@ -458,7 +458,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(582, 16);
+            this.label9.Location = new System.Drawing.Point(589, 17);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(129, 13);
             this.label9.TabIndex = 11;
@@ -493,7 +493,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(521, 48);
+            this.label12.Location = new System.Drawing.Point(528, 48);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(55, 13);
             this.label12.TabIndex = 19;
@@ -502,7 +502,7 @@
             // txtRdoCantColectSinSubirPasaj
             // 
             this.txtRdoCantColectSinSubirPasaj.Enabled = false;
-            this.txtRdoCantColectSinSubirPasaj.Location = new System.Drawing.Point(458, 45);
+            this.txtRdoCantColectSinSubirPasaj.Location = new System.Drawing.Point(465, 45);
             this.txtRdoCantColectSinSubirPasaj.Name = "txtRdoCantColectSinSubirPasaj";
             this.txtRdoCantColectSinSubirPasaj.Size = new System.Drawing.Size(59, 20);
             this.txtRdoCantColectSinSubirPasaj.TabIndex = 18;
@@ -510,7 +510,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(277, 48);
+            this.label13.Location = new System.Drawing.Point(284, 48);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(178, 13);
             this.label13.TabIndex = 17;
@@ -519,7 +519,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(802, 48);
+            this.label14.Location = new System.Drawing.Point(809, 49);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(15, 13);
             this.label14.TabIndex = 22;
@@ -528,7 +528,7 @@
             // txtRdoPorcColectSinSubirPasaj
             // 
             this.txtRdoPorcColectSinSubirPasaj.Enabled = false;
-            this.txtRdoPorcColectSinSubirPasaj.Location = new System.Drawing.Point(766, 45);
+            this.txtRdoPorcColectSinSubirPasaj.Location = new System.Drawing.Point(773, 46);
             this.txtRdoPorcColectSinSubirPasaj.Name = "txtRdoPorcColectSinSubirPasaj";
             this.txtRdoPorcColectSinSubirPasaj.Size = new System.Drawing.Size(33, 20);
             this.txtRdoPorcColectSinSubirPasaj.TabIndex = 21;
@@ -536,7 +536,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(589, 48);
+            this.label15.Location = new System.Drawing.Point(596, 49);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(175, 13);
             this.label15.TabIndex = 20;
@@ -545,7 +545,7 @@
             // txtRdoPromEsperaPasaj
             // 
             this.txtRdoPromEsperaPasaj.Enabled = false;
-            this.txtRdoPromEsperaPasaj.Location = new System.Drawing.Point(975, 45);
+            this.txtRdoPromEsperaPasaj.Location = new System.Drawing.Point(1002, 46);
             this.txtRdoPromEsperaPasaj.Name = "txtRdoPromEsperaPasaj";
             this.txtRdoPromEsperaPasaj.Size = new System.Drawing.Size(46, 20);
             this.txtRdoPromEsperaPasaj.TabIndex = 24;
@@ -553,7 +553,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(833, 48);
+            this.label17.Location = new System.Drawing.Point(860, 49);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(136, 13);
             this.label17.TabIndex = 23;
@@ -562,7 +562,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1027, 49);
+            this.label16.Location = new System.Drawing.Point(1054, 50);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(26, 13);
             this.label16.TabIndex = 25;
@@ -599,7 +599,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1317, 664);
+            this.ClientSize = new System.Drawing.Size(1361, 664);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.txtTimeElapsed);
