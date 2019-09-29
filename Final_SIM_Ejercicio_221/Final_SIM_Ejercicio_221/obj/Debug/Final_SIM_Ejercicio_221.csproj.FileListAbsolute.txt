@@ -41,3 +41,4 @@ D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercic
 D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.csproj.GenerateResource.Cache
 D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.exe
 D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.pdb
+C:\Users\Santiago\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.csprojResolveAssemblyReference.cache
