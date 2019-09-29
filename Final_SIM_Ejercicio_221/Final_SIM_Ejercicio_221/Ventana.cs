@@ -123,6 +123,13 @@ namespace Final_SIM_Ejercicio_221
             MaxColaParada.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDatos.Columns.Add(MaxColaParada);
 
+            DataGridViewTextBoxColumn CantPasajerosTransportados = new DataGridViewTextBoxColumn();
+            CantPasajerosTransportados.Name = "cantPasajerosTransportados";
+            CantPasajerosTransportados.HeaderText = "Cant Pasajeros Transportados";
+            CantPasajerosTransportados.ReadOnly = true;
+            CantPasajerosTransportados.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(CantPasajerosTransportados);
+
             DataGridViewTextBoxColumn CantPasajerosRetirados = new DataGridViewTextBoxColumn();
             CantPasajerosRetirados.Name = "cantPasajerosRetirados";
             CantPasajerosRetirados.HeaderText = "Cant Pasajeros Retirados";
@@ -278,7 +285,11 @@ namespace Final_SIM_Ejercicio_221
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2); //proximo fin ascenso pasajero 
                             }
-                            else //SI NO HAY PASAJEROS ESERANDO SE VA SIN SUBIR PASAJEROS
+                            else if(ve.estadoParada == "CARGANDO")
+                            {
+                                ve.colaColectivos++;
+                            }
+                            else if(ve.colaParada == 0 && ve.estadoParada == "LIBRE") //SI NO HAY PASAJEROS ESERANDO SE VA SIN SUBIR PASAJEROS
                             {
                                 ve.totColectQuePasan++;
                                 ve.totColectQuePasanSinSubirPasaj++;
@@ -311,7 +322,6 @@ namespace Final_SIM_Ejercicio_221
                                 ve.maxColaParada = ve.colaParada; //maxima cantidad de personas en parada de colectivo
                             }
 
-
                             //DATOS PASAJERO
                             Pasajero pasaj = new Pasajero();
                             // datos pasajero
@@ -320,6 +330,7 @@ namespace Final_SIM_Ejercicio_221
                             pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
                             pasaj.ingresoSistema = ve.reloj;
                             // pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+
                             //TODO: AGREGAR DATOS PASAJERO A LA GRID VIEW
                             if (mostarPasajColect)
                             {
@@ -370,7 +381,7 @@ namespace Final_SIM_Ejercicio_221
                                 ve.proxFinAscensoPasajero = 0;
 
                                 
-                                ve.cantPasajerosRetirados += capacidadMaximaColectivo - ve.capacidadCargaColect;
+                                ve.cantPasajerosTransportados += capacidadMaximaColectivo - ve.capacidadCargaColect;
                                 
                                 //SE VUELVE A CERO LA CAPACIDAD DE CARGA HASTA NUEVO COLECTIVO
                                 ve.capacidadCargaColect = 0;
@@ -407,7 +418,7 @@ namespace Final_SIM_Ejercicio_221
                     //Estado de la parada, Cola de pasajeros, y max cola de pasajeros en la parada
                     ve.colaParada, ve.estadoParada, ve.capacidadCargaColect, ve.maxColaParada,
                     //Cantidad pasajeros que se van 
-                    ve.cantPasajerosRetirados, 
+                    ve.cantPasajerosTransportados, ve.cantPasajerosRetirados, 
                     //Cola de colectivos en la parada
                     ve.colaColectivos, ve.totColectQuePasan,
                     //Cantidad pasajeros que se van por interrupcion
@@ -419,6 +430,19 @@ namespace Final_SIM_Ejercicio_221
 
                 i++;
             }// fin del while
+
+
+            //CALULO DE RESULTADOS
+            this.txtRdoCantPasajEnSistema.Text = nroPasajero.ToString();
+            this.txtRdoCantPasajTransp.Text = ve.cantPasajerosTransportados.ToString();
+            this.txtRdoCantPasajRetirados.Text = ve.cantPasajerosRetirados.ToString();
+            this.txtRdoColaMaxPasaj.Text = ve.maxColaParada.ToString();
+            this.txtRdoPromEsperaPasaj.Text = "";
+
+            this.txtRdoCantColectSistema.Text = "";
+            this.txtRdoCantColectSinSubirPasaj.Text = "";
+            this.txtRdoPorcColectSinSubirPasaj.Text = "";
+
 
             watch.Stop();
             this.txtTimeElapsed.Text = watch.Elapsed.ToString();

@@ -32,6 +32,7 @@ namespace Final_SIM_Ejercicio_221
         public Int64 capacidadCargaColect { get; set; }
         public Int64 maxColaParada { get; set; }
 
+        public Int64 cantPasajerosTransportados { get; set; }
         public Int64 cantPasajerosRetirados { get; set;}
         public Int64 colaColectivos { get; set; }
 
