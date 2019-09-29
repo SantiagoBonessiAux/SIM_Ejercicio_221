@@ -29,7 +29,7 @@ namespace Final_SIM_Ejercicio_221
         public Int64 maxColaParada { get; set; }
         public Int64 cantPasajerosRetirados { get; set;}
         public Int64 colaColectivos { get; set; }
-        public Int64 totColectCola { get; set; }
+        public Int64 totColectQuePasanPorCola { get; set; }
         public double proxSalidaColectivo { get; set; }
         public Int64 cantColectSinSubirPasaj { get; set; } 
         public double porcColectSinSubirPasaj { get; set; }
@@ -57,7 +57,7 @@ namespace Final_SIM_Ejercicio_221
             this.cantPasajerosRetirados = cantPasajerosRetirados;
 
             this.colaColectivos = colaColectivos;
-            this.totColectCola = totColectCola;
+            this.totColectQuePasanPorCola = totColectQuePasanPorCola;
             this.proxSalidaColectivo = proxSalidaColectivo;
 
             this.cantColectSinSubirPasaj = cantColectSinSubirPasaj;

@@ -32,3 +32,12 @@ C:\Users\Santiago\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Fin
 C:\Users\Santiago\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\bin\Debug\Final_SIM_Ejercicio_221.pdb
 C:\Users\Santiago\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.exe
 C:\Users\Santiago\Documents\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.pdb
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\bin\Debug\Final_SIM_Ejercicio_221.exe.config
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\bin\Debug\Final_SIM_Ejercicio_221.exe
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\bin\Debug\Final_SIM_Ejercicio_221.pdb
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.csprojResolveAssemblyReference.cache
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.Ventana.resources
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.Properties.Resources.resources
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.csproj.GenerateResource.Cache
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.exe
+D:\Documentos\GitHub\SIM_Ejercicio_221\Final_SIM_Ejercicio_221\Final_SIM_Ejercicio_221\obj\Debug\Final_SIM_Ejercicio_221.pdb
