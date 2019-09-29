@@ -21,6 +21,14 @@ namespace Final_SIM_Ejercicio_221
 
         public void IncializarColumnas()
         {
+
+            DataGridViewTextBoxColumn Fila = new DataGridViewTextBoxColumn();
+            Fila.Name = "fila";
+            Fila.HeaderText = "Fila";
+            Fila.ReadOnly = true;
+            Fila.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(Fila);
+
             DataGridViewTextBoxColumn Evento = new DataGridViewTextBoxColumn();
             Evento.Name = "evento";
             Evento.HeaderText = "Evento";
@@ -224,11 +232,11 @@ namespace Final_SIM_Ejercicio_221
                     ve.evento = "INICIO";
                     ve.reloj = 0;
 
-                    ve.rndLlegColectivo = Math.Round(rnd.NextDouble(), 2);
+                    ve.rndLlegColectivo = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
                     ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
                     ve.proxLlegColectivo = Math.Round(ve.reloj + ve.tpoLlegColectivo, 2);
 
-                    ve.rndLlegPasajero = Math.Round(rnd.NextDouble(), 2);
+                    ve.rndLlegPasajero = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
                     ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                     ve.proxLlegPasajero = Math.Round(ve.reloj + ve.tpoLlegPasajero, 2);
 
@@ -433,7 +441,7 @@ namespace Final_SIM_Ejercicio_221
                 if (ve.reloj >= auxUltMin)
                 {
                     dgvDatos.Rows.Add(
-                    ve.evento, ve.reloj, 
+                    ve.fila, ve.evento, ve.reloj, 
                     //Legada colectivos
                     ve.rndLlegColectivo, ve.tpoLlegColectivo, ve.proxLlegColectivo,
                     //Llegada pasajeros
@@ -462,13 +470,15 @@ namespace Final_SIM_Ejercicio_221
             this.txtRdoCantPasajTransp.Text = ve.cantPasajerosTransportados.ToString();
             this.txtRdoCantPasajRetirados.Text = ve.cantPasajerosRetirados.ToString();
             this.txtRdoColaMaxPasaj.Text = ve.maxColaParada.ToString();
-            this.txtRdoPromEsperaPasaj.Text = "";
+            this.txtRdoPromEsperaPasaj.Text = "FALTA CALCULAR";
 
-            this.txtRdoCantColectSistema.Text = "";
-            this.txtRdoCantColectSinSubirPasaj.Text = "";
-            this.txtRdoPorcColectSinSubirPasaj.Text = "";
+            this.txtRdoCantColectSistema.Text = ve.totColectQuePasan.ToString();
+            this.txtRdoCantColectSinSubirPasaj.Text = ve.totColectQuePasanSinSubirPasaj.ToString();
 
-
+            double porcColecSinSubirPasaj = (ve.totColectQuePasanSinSubirPasaj * 100) / ve.totColectQuePasan;
+            double porcColectSinSubirPasajAux = Math.Round(porcColecSinSubirPasaj, 2);
+            this.txtRdoPorcColectSinSubirPasaj.Text = porcColectSinSubirPasajAux.ToString();
+            
             watch.Stop();
             this.txtTimeElapsed.Text = watch.Elapsed.ToString();
 
