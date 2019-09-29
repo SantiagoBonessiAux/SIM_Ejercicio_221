@@ -261,8 +261,8 @@ namespace Final_SIM_Ejercicio_221
                         case "Llegada Colectivo":
                             ve.evento = "Llegada Colectivo";
                             ve.reloj = ve.proxLlegColectivo;
-                            
-                            ve.rndLlegColectivo = Math.Round(rnd.NextDouble(), 2);
+
+                            ve.rndLlegColectivo = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
                             ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
                             ve.proxLlegColectivo = ve.reloj + ve.tpoLlegColectivo;
 
@@ -300,7 +300,7 @@ namespace Final_SIM_Ejercicio_221
                             ve.evento = "Llegada Pasajero";
                             ve.reloj = ve.proxLlegPasajero;
 
-                            ve.rndLlegPasajero = Math.Round(rnd.NextDouble(), 2);
+                            ve.rndLlegPasajero = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
                             ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                             ve.proxLlegPasajero = ve.reloj + ve.tpoLlegPasajero;
 

@@ -64,7 +64,6 @@ namespace Final_SIM_Ejercicio_221
         /// <returns></returns>
         public double getTiempoLlegadaColectivo(double rnd, double tpoPromedio)
         {
-            if (rnd == 1) rnd = 0.99;
             return Math.Round((-(tpoPromedio) * Math.Log(1- rnd)), 2);
         }
 
@@ -77,7 +76,6 @@ namespace Final_SIM_Ejercicio_221
         /// <returns></returns>
         public double getTiempoLlegadaPasajero(double rnd, double tpoPromedio)
         {
-            if (rnd == 1) rnd = 0.99;
             return Math.Round((-(tpoPromedio) * Math.Log(1- rnd)), 2); 
         }
 
