@@ -178,6 +178,8 @@ namespace Final_SIM_Ejercicio_221
             double promLlegPasajeros = Math.Round(double.Parse(this.txtTpoLLegPasajeros.Text)/60, 2);
             double tpoAscensoPasajeros = Math.Round(double.Parse(this.txtTpoSubirPasajero.Text)/60, 2);
             double tpoEsperaMaximaPasajeros = double.Parse(this.txtTpoEsperaMaximaPasajeros.Text);
+            
+            bool mostrarPasajerosColectivos = bool.Parse(this.chPasajColect.Checked.ToString());
 
             bool banderaSubiendoPasajero = false;            
 
@@ -258,7 +260,6 @@ namespace Final_SIM_Ejercicio_221
                             {
                                 ve.cantColectSinSubirPasaj++;
                             }
-                            
 
                             break;
                         case "Llegada Pasajero":
@@ -329,11 +330,6 @@ namespace Final_SIM_Ejercicio_221
                                 ve.proxSalidaColectivo = ve.reloj;
                                 ve.proxFinAscensoPasajero = 0;
                             }
-                            break;
-                        case "Salida Colectivo":
-
-                            ve.evento = "Salida Colectivo";
-                            ve.reloj = ve.proxSalidaColectivo;
 
                             break;
                         case "Interrupcion Espera Pasajero":
@@ -354,8 +350,8 @@ namespace Final_SIM_Ejercicio_221
 
 
                 double auxUltMin = tiempoFinal - ultimosMinutos;
-                //if (ve.reloj >= auxUltMin)
-                //{
+                if (ve.reloj >= auxUltMin)
+                {
                     dgvDatos.Rows.Add(
                     ve.evento, ve.reloj, 
                     //Legada colectivos
@@ -375,12 +371,6 @@ namespace Final_SIM_Ejercicio_221
                     
                     );
 
-                //}
-
-                //TO DO: PRUEBAS INICIALES
-                if ( i == 15 )
-                {
-                    break;
                 }
 
                 i++;

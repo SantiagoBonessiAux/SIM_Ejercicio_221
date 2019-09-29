@@ -53,6 +53,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCapacidadColectivos = new System.Windows.Forms.TextBox();
+            this.chPasajColect = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -100,7 +101,7 @@
             this.txtUltHoras.Name = "txtUltHoras";
             this.txtUltHoras.Size = new System.Drawing.Size(51, 20);
             this.txtUltHoras.TabIndex = 4;
-            this.txtUltHoras.Text = "3";
+            this.txtUltHoras.Text = "1";
             // 
             // label30
             // 
@@ -117,7 +118,7 @@
             this.txtHorasSim.Name = "txtHorasSim";
             this.txtHorasSim.Size = new System.Drawing.Size(68, 20);
             this.txtHorasSim.TabIndex = 2;
-            this.txtHorasSim.Text = "8";
+            this.txtHorasSim.Text = "1";
             // 
             // lblHsSim
             // 
@@ -139,14 +140,14 @@
             this.dgvDatos.ReadOnly = true;
             this.dgvDatos.RowHeadersWidth = 10;
             this.dgvDatos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDatos.Size = new System.Drawing.Size(1084, 413);
+            this.dgvDatos.Size = new System.Drawing.Size(1235, 479);
             this.dgvDatos.TabIndex = 20;
             // 
             // btnSimular
             // 
-            this.btnSimular.Location = new System.Drawing.Point(1007, 42);
+            this.btnSimular.Location = new System.Drawing.Point(1036, 31);
             this.btnSimular.Name = "btnSimular";
-            this.btnSimular.Size = new System.Drawing.Size(91, 45);
+            this.btnSimular.Size = new System.Drawing.Size(183, 60);
             this.btnSimular.TabIndex = 22;
             this.btnSimular.Text = "SIMULAR";
             this.btnSimular.UseVisualStyleBackColor = true;
@@ -297,12 +298,23 @@
             this.txtCapacidadColectivos.Text = "40";
             this.txtCapacidadColectivos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // chPasajColect
+            // 
+            this.chPasajColect.AutoSize = true;
+            this.chPasajColect.Location = new System.Drawing.Point(1036, 11);
+            this.chPasajColect.Name = "chPasajColect";
+            this.chPasajColect.Size = new System.Drawing.Size(170, 17);
+            this.chPasajColect.TabIndex = 28;
+            this.chPasajColect.Text = "Mostrar Pasajeros y Colectivos";
+            this.chPasajColect.UseVisualStyleBackColor = true;
+            // 
             // Ventana
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1108, 530);
+            this.ClientSize = new System.Drawing.Size(1259, 596);
+            this.Controls.Add(this.chPasajColect);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -359,6 +371,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtCapacidadColectivos;
+        private System.Windows.Forms.CheckBox chPasajColect;
     }
 }
 
