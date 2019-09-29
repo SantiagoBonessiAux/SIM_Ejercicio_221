@@ -165,7 +165,7 @@ namespace Final_SIM_Ejercicio_221
             dgvDatos.Refresh();
             IncializarColumnas();
 
-            var watch = System.Diagnostics.Stopwatch.StartNew(); // que hace
+            var watch = System.Diagnostics.Stopwatch.StartNew();
 
             //Variables de pantalla
             int horasSim = int.Parse(txtHorasSim.Text);
@@ -175,11 +175,9 @@ namespace Final_SIM_Ejercicio_221
 
             double promLlegColectivos = double.Parse(this.txtTpoLlegColectivos.Text);
             Int64 capacidadMaximaColectivo = Int64.Parse(this.txtCapacidadColectivos.Text);
-            double promLlegPasajeros = Math.Round(double.Parse(this.txtTpoLLegPasajeros.Text)/60, 2);
-            double tpoAscensoPasajeros = Math.Round(double.Parse(this.txtTpoSubirPasajero.Text)/60, 2);
+            double promLlegPasajeros = Math.Round(double.Parse(this.txtTpoLLegPasajeros.Text)/60, 2); // tiempo llegada pasajeros a minutos
+            double tpoAscensoPasajeros = Math.Round(double.Parse(this.txtTpoSubirPasajero.Text)/60, 2); //tiempo ascenso pasajeros a minutos
             double tpoEsperaMaximaPasajeros = double.Parse(this.txtTpoEsperaMaximaPasajeros.Text);
-            
-            bool mostrarPasajerosColectivos = bool.Parse(this.chPasajColect.Checked.ToString());
 
             bool banderaSubiendoPasajero = false;            
 
@@ -250,9 +248,10 @@ namespace Final_SIM_Ejercicio_221
                             colect.estado = "ESPERANDO EN COLA"; // Estado por defecto
 
                             //SI HAY PASAJEROS ESPERANDO EMPIEZA A CARGAR
-                            if (ve.colaParada > 0)
+                            if (ve.colaParada > 0 && ve.colaColectivos == 0)
                             {
                                 ve.estadoParada = "CARGANDO";
+                                colect.estado = "CARGANDO PASAJEROS";
                                 ve.proxFinAscensoPasajero = ve.reloj + tpoAscensoPasajeros; //proximo fin ascenso pasajero 
                                 banderaSubiendoPasajero = true;
                             }
@@ -261,6 +260,8 @@ namespace Final_SIM_Ejercicio_221
                                 ve.cantColectSinSubirPasaj++;
                             }
 
+                            listaColectivos.Add(colect);
+                           
                             break;
                         case "Llegada Pasajero":
                             ve.evento = "Llegada Pasajero";
@@ -279,11 +280,13 @@ namespace Final_SIM_Ejercicio_221
                             pasaj.ingresoSistema = ve.reloj;
                             pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros;
 
-                            listaPasajeros.Add(pasaj);
-
                             ve.colaParada++;
 
                             if (ve.colaParada == 0)
+                            {
+                                ve.estadoParada = "LIBRE"; 
+                            }
+                            else
                             {
                                 ve.estadoParada = "OCUPADA"; // la parada tiene pasajeros
                             }
@@ -293,7 +296,8 @@ namespace Final_SIM_Ejercicio_221
                                 ve.maxColaParada = ve.colaParada; //maxima cantidad de personas en parada de colectivo
                             }
 
-                           
+                            listaPasajeros.Add(pasaj);
+
                             break;
 
                         case "Fin Ascenso Pasajero":
@@ -307,8 +311,11 @@ namespace Final_SIM_Ejercicio_221
                             //TO DO: FALTA CONTROLAR CAPACIDAD MAXIMA DE COLECTIVOS.
                             if (capacidadMaximaColectivo == 0 && ve.colaParada == 0)
                             {
+                                ve.totColectQuePasanPorCola = ve.totColectQuePasanPorCola + ve.colaColectivos; // ya sean los colectivos que se retiran porque no hay mas personas en parada para cargar, como los colectivos que no suben a nadie
                                 ve.estadoParada = "Libre"; //no hay pasajeros
                                 ve.colaColectivos = 0; //cuando se llena el colectivo y no hay nadie mas en parada, se retiran todos los colectivos que hay en cola parada
+
+                                // TO DO calcular la cantidad de colectivos que se retiran sin subir pasajeros
 
                                 foreach (var c in listaColectivos)
                                 {
@@ -330,6 +337,11 @@ namespace Final_SIM_Ejercicio_221
                                 ve.proxSalidaColectivo = ve.reloj;
                                 ve.proxFinAscensoPasajero = 0;
                             }
+                            break;
+                        case "Salida Colectivo":
+
+                            ve.evento = "Salida Colectivo";
+                            ve.reloj = ve.proxSalidaColectivo;
 
                             break;
                         case "Interrupcion Espera Pasajero":
@@ -350,8 +362,8 @@ namespace Final_SIM_Ejercicio_221
 
 
                 double auxUltMin = tiempoFinal - ultimosMinutos;
-                if (ve.reloj >= auxUltMin)
-                {
+                //if (ve.reloj >= auxUltMin)
+                //{
                     dgvDatos.Rows.Add(
                     ve.evento, ve.reloj, 
                     //Legada colectivos
@@ -365,12 +377,18 @@ namespace Final_SIM_Ejercicio_221
                     //Cantidad pasajeros que se van 
                     ve.cantPasajerosRetirados, 
                     //Cola de colectivos en la parada
-                    ve.colaColectivos, ve.totColectCola,
+                    ve.colaColectivos, ve.totColectQuePasanPorCola,
                     //Cantidad pasajeros que se van por interrupcion
                     ve.cantColectSinSubirPasaj, ve.porcColectSinSubirPasaj
                     
                     );
 
+                //}
+
+                //TO DO: PRUEBAS INICIALES
+                if ( i == 30 )
+                {
+                    break;
                 }
 
                 i++;
