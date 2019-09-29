@@ -62,6 +62,8 @@ namespace Final_SIM_Ejercicio_221
 
             this.cantColectSinSubirPasaj = cantColectSinSubirPasaj;
             this.porcColectSinSubirPasaj = porcColectSinSubirPasaj;
+
+            this.cantPasajerosSubidos = cantPasajerosSubidos;
         }
 
 
