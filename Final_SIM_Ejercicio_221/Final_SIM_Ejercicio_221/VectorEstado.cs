@@ -40,7 +40,6 @@ namespace Final_SIM_Ejercicio_221
         public Int64 totColectQuePasanSinSubirPasaj { get; set; } 
 
         public double porcColectSinSubirPasaj { get; set; }
-        public Int64 cantPasajerosSubidos { get; set; }
 
         //PROX INTERRUPCION
         public double proxInterrupcionPasajero { get; set; }
@@ -75,7 +74,6 @@ namespace Final_SIM_Ejercicio_221
 
             this.porcColectSinSubirPasaj = porcColectSinSubirPasaj;
 
-            this.cantPasajerosSubidos = cantPasajerosSubidos;
             this.proxInterrupcionPasajero = proxInterrupcionPasajero;
         }
 

@@ -347,7 +347,6 @@ namespace Final_SIM_Ejercicio_221
                             ve.reloj = ve.proxFinAscensoPasajero;
 
                             ve.colaParada--;
-                            ve.cantPasajerosSubidos++;
                             ve.capacidadCargaColect--;
 
                             //if (ve.capacidadCargaColect == 0 && ve.colaParada == 0)
@@ -383,13 +382,15 @@ namespace Final_SIM_Ejercicio_221
                                 ve.totColectQuePasan++;
 
                                 ve.capacidadCargaColect = capacidadMaximaColectivo;
-
                             }
                             else if (ve.colaParada > 0 && ve.capacidadCargaColect == 0 && ve.colaColectivos == 0)
                             {
                                 ve.estadoParada = "OCUPADA";
                                 ve.tpoAscensoPasajero = 0;
                                 ve.proxFinAscensoPasajero = 0;
+
+                                ve.cantPasajerosTransportados += capacidadMaximaColectivo;
+
                             }
                             else if(ve.colaParada == 0 && ve.capacidadCargaColect > 0)
                             {
@@ -398,12 +399,20 @@ namespace Final_SIM_Ejercicio_221
                                 ve.tpoAscensoPasajero = 0;
                                 ve.proxFinAscensoPasajero = 0;
                                 
-                                ve.cantPasajerosTransportados += capacidadMaximaColectivo - ve.capacidadCargaColect;
+                                ve.cantPasajerosTransportados += (capacidadMaximaColectivo - ve.capacidadCargaColect);
                                 
                                 //SE VUELVE A CERO LA CAPACIDAD DE CARGA HASTA NUEVO COLECTIVO
                                 ve.capacidadCargaColect = 0;
 
                                 ve.totColectQuePasan++; //SE AGREGA UN COLECTIVO A LOS QUE PASAN
+
+                                if (ve.colaColectivos > 0)
+                                {
+                                    ve.totColectQuePasanSinSubirPasaj += ve.colaColectivos;
+                                    ve.totColectQuePasan += ve.colaColectivos;
+
+                                    ve.colaColectivos = 0;
+                                }
                             }
                             break;
                         case "Interrupcion Espera Pasajero":
