@@ -203,6 +203,7 @@ namespace Final_SIM_Ejercicio_221
             double tpoAscensoPasajeros = Math.Round(double.Parse(this.txtTpoSubirPasajero.Text)/60, 2); //tiempo ascenso pasajeros a minutos
             double tpoEsperaMaximaPasajeros = double.Parse(this.txtTpoEsperaMaximaPasajeros.Text);
             bool mostarPasajColect = this.chPasajColect.Checked;
+            int pasajerosSubidos = 0;
 
 
             Random rnd = new Random();
@@ -329,14 +330,7 @@ namespace Final_SIM_Ejercicio_221
                                 ve.maxColaParada = ve.colaParada; //maxima cantidad de personas en parada de colectivo
                             }
 
-                            //DATOS PASAJERO
-                            Pasajero pasaj = new Pasajero();
-                            // datos pasajero
-                            nroPasajero++;
-                            pasaj.ID = nroPasajero;
-                            pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
-                            pasaj.ingresoSistema = ve.reloj;
-                            // pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+                           
 
                             //TODO: AGREGAR DATOS PASAJERO A LA GRID VIEW
                             if (mostarPasajColect)
@@ -344,8 +338,7 @@ namespace Final_SIM_Ejercicio_221
 
                             }
 
-                            listaPasajeros.Add(pasaj);
-                            
+                                                       
                             break;
 
                         case "Fin Ascenso Pasajero":
@@ -355,6 +348,7 @@ namespace Final_SIM_Ejercicio_221
 
                             ve.colaParada--;
                             ve.capacidadCargaColect--;
+                            pasajerosSubidos++;
 
                             //if (ve.capacidadCargaColect == 0 && ve.colaParada == 0)
                             //{
@@ -432,12 +426,125 @@ namespace Final_SIM_Ejercicio_221
 
                     }
 
-              }
-
-
-
+                }
 
                 double auxUltMin = tiempoFinal - ultimosMinutos;
+
+                if (chPasajColect.Checked == true)
+                {
+                    dgvDatos.Rows.Add(
+                    ve.fila, ve.evento, ve.reloj,
+                    //Legada colectivos
+                    ve.rndLlegColectivo, ve.tpoLlegColectivo, ve.proxLlegColectivo,
+                    //Llegada pasajeros
+                    ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero,
+                    //Ascenso pasajeros y fin ascenso, donde fin ascenso inicia salida de colectivo
+                    ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero,
+                    //Estado de la parada, Cola de pasajeros, y max cola de pasajeros en la parada
+                    ve.colaParada, ve.estadoParada, ve.capacidadCargaColect, ve.maxColaParada,
+                    //Cantidad pasajeros que se van 
+                    ve.cantPasajerosTransportados, ve.cantPasajerosRetirados,
+                    //Cola de colectivos en la parada
+                    ve.colaColectivos, ve.totColectQuePasan,
+                    //Cantidad pasajeros que se van por interrupcion
+                    ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj);
+
+                    if (ve.evento == "Llegada Pasajero")
+                    {
+                        //DATOS PASAJERO
+                        Pasajero pasaj = new Pasajero();
+                        // datos pasajero
+                        nroPasajero++;
+                        pasaj.ID = nroPasajero;
+                        pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
+                        pasaj.ingresoSistema = ve.reloj;
+                        // pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+                        listaPasajeros.Add(pasaj);
+
+                        DataGridViewTextBoxColumn colEstadoPasajero = new DataGridViewTextBoxColumn();
+                        colEstadoPasajero.HeaderText = "Pasaj " + pasaj.estado.ToString() + "Estado";
+                        colEstadoPasajero.Name = "Estado" + pasaj.ID.ToString();
+                        colEstadoPasajero.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                        colEstadoPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        dgvDatos.Columns.Add(colEstadoPasajero);
+                        dgvDatos.Rows[i].Cells[colEstadoPasajero.Name].Value = pasaj.estado;
+
+                        DataGridViewTextBoxColumn colTpoLLeg = new DataGridViewTextBoxColumn();
+                        colTpoLLeg.HeaderText = "Pasaj " + pasaj.ID.ToString() + " Tpo Lleg.";
+                        colTpoLLeg.Name = "tpoLlegada " + pasaj.ID.ToString();
+                        colTpoLLeg.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                        colTpoLLeg.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        dgvDatos.Columns.Add(colTpoLLeg);
+                        dgvDatos.Rows[i].Cells[colTpoLLeg.Name].Value = pasaj.ingresoSistema;
+
+                        //DataGridViewTextBoxColumn colTpoPerm = new DataGridViewTextBoxColumn();
+                        //colTpoPerm.HeaderText = "Tpo Perm";
+                        //colTpoPerm.Name = "tpoPerm " + pasaj.ID.ToString();
+                        //colTpoPerm.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                        //colTpoPerm.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        //dgvDatos.Columns.Add(colTpoPerm);
+                    }
+
+                    if (ve.evento == "Fin Ascenso Pasajero")
+                    {
+                        //calcular tiempo acumulado de espera en cola
+                        foreach (var pasajeroSalida in listaPasajeros)
+                        {
+                            if (pasajeroSalida.ID == pasajerosSubidos)
+                            {
+                                ve.tpoAcuEsperaPasajerosCola += Math.Round(ve.reloj - pasajeroSalida.ingresoSistema, 2);
+                                ve.tpoPromEsperaPasajerosCola = Math.Round(ve.tpoAcuEsperaPasajerosCola / pasajerosSubidos);
+                            }
+                        }
+                    }
+
+                    foreach (var p in listaPasajeros)
+                    {
+                        String nomEstado = "Estado" + p.ID.ToString();
+                        dgvDatos.Rows[i].Cells[nomEstado].Value = p.estado;
+
+                        String nomTpoSalida = "tpoSalida " + p.ID.ToString();
+                        dgvDatos.Rows[i].Cells[nomTpoSalida].Value = p.ingresoSistema;
+
+                        //String nomTpoPerm = "tpoPerm " + p.idPersona.ToString();
+                        //dgvDatos.Rows[i].Cells[nomTpoPerm].Value = p.tpoPerm;
+                    }
+
+
+                } //fin if de checkbox
+                else
+                {
+                    if (ve.evento == "Llegada Pasajero")
+                    {
+                        //DATOS PASAJERO
+                        Pasajero pasaj = new Pasajero();
+                        // datos pasajero
+                        nroPasajero++;
+                        pasaj.ID = nroPasajero;
+                        pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
+                        pasaj.ingresoSistema = ve.reloj;
+                        // pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+                        listaPasajeros.Add(pasaj);
+
+                    }
+
+                    if (ve.evento == "Fin Ascenso Pasajero")
+                    {
+                        //calcular tiempo acumulado de espera en cola
+                        foreach (var pasajeroSalida in listaPasajeros)
+                        {
+                            if (pasajeroSalida.ID == pasajerosSubidos)
+                            {
+                                ve.tpoAcuEsperaPasajerosCola += Math.Round(ve.reloj - pasajeroSalida.ingresoSistema, 2);
+                                ve.tpoPromEsperaPasajerosCola = Math.Round(ve.tpoAcuEsperaPasajerosCola / pasajerosSubidos);
+                            }
+                        }
+                    }
+
+                }
+
+
+                
                 if (ve.reloj >= auxUltMin)
                 {
                     dgvDatos.Rows.Add(
@@ -461,6 +568,11 @@ namespace Final_SIM_Ejercicio_221
 
                 }
 
+                if (i == 15)
+                {
+                    break;
+                }
+
                 i++;
             }// fin del while
 
@@ -475,9 +587,9 @@ namespace Final_SIM_Ejercicio_221
             this.txtRdoCantColectSistema.Text = ve.totColectQuePasan.ToString();
             this.txtRdoCantColectSinSubirPasaj.Text = ve.totColectQuePasanSinSubirPasaj.ToString();
 
-            double porcColecSinSubirPasaj = (ve.totColectQuePasanSinSubirPasaj * 100) / ve.totColectQuePasan;
-            double porcColectSinSubirPasajAux = Math.Round(porcColecSinSubirPasaj, 2);
-            this.txtRdoPorcColectSinSubirPasaj.Text = porcColectSinSubirPasajAux.ToString();
+            //double porcColecSinSubirPasaj = (ve.totColectQuePasanSinSubirPasaj * 100) / ve.totColectQuePasan;
+            //double porcColectSinSubirPasajAux = Math.Round(porcColecSinSubirPasaj, 2);
+            //this.txtRdoPorcColectSinSubirPasaj.Text = porcColectSinSubirPasajAux.ToString();
             
             watch.Stop();
             this.txtTimeElapsed.Text = watch.Elapsed.ToString();

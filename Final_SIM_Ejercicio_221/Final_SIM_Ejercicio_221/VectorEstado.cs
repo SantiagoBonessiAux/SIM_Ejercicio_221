@@ -41,6 +41,9 @@ namespace Final_SIM_Ejercicio_221
 
         public double porcColectSinSubirPasaj { get; set; }
 
+        public double tpoAcuEsperaPasajerosCola { get; set; }
+        public double tpoPromEsperaPasajerosCola { get; set; }
+
         //PROX INTERRUPCION
         public double proxInterrupcionPasajero { get; set; }
 
@@ -75,6 +78,9 @@ namespace Final_SIM_Ejercicio_221
             this.porcColectSinSubirPasaj = porcColectSinSubirPasaj;
 
             this.proxInterrupcionPasajero = proxInterrupcionPasajero;
+
+            this.tpoAcuEsperaPasajerosCola = tpoAcuEsperaPasajerosCola;
+            this.tpoPromEsperaPasajerosCola = tpoPromEsperaPasajerosCola;
         }
 
 
