@@ -497,7 +497,7 @@ namespace Final_SIM_Ejercicio_221
                         pasaj.ID = nroPasajero;
                         pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
                         pasaj.ingresoSistema = ve.reloj;
-                        // pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+                        pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
                         listaPasajeros.Add(pasaj);
 
                         DataGridViewTextBoxColumn colEstadoPasajero = new DataGridViewTextBoxColumn();
@@ -516,12 +516,13 @@ namespace Final_SIM_Ejercicio_221
                         dgvDatos.Columns.Add(colTpoLLeg);
                         dgvDatos.Rows[i].Cells[colTpoLLeg.Name].Value = pasaj.ingresoSistema;
 
-                        //DataGridViewTextBoxColumn colTpoPerm = new DataGridViewTextBoxColumn();
-                        //colTpoPerm.HeaderText = "Tpo Perm";
-                        //colTpoPerm.Name = "tpoPerm " + pasaj.ID.ToString();
-                        //colTpoPerm.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-                        //colTpoPerm.SortMode = DataGridViewColumnSortMode.NotSortable;
-                        //dgvDatos.Columns.Add(colTpoPerm);
+                        DataGridViewTextBoxColumn colTpoInterrupcion = new DataGridViewTextBoxColumn();
+                        colTpoInterrupcion.HeaderText = "Tpo Interr";
+                        colTpoInterrupcion.Name = "tpoInterr " + pasaj.ID.ToString();
+                        colTpoInterrupcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+                        colTpoInterrupcion.SortMode = DataGridViewColumnSortMode.NotSortable;
+                        dgvDatos.Columns.Add(colTpoInterrupcion);
+                        dgvDatos.Rows[i].Cells[colTpoLLeg.Name].Value = pasaj.salidaSistema;
                     }
 
                     if (ve.evento == "Fin Ascenso Pasajero")
@@ -545,8 +546,8 @@ namespace Final_SIM_Ejercicio_221
                         String nomTpoLlegada = "tpoLlegada " + p.ID.ToString();
                         dgvDatos.Rows[i].Cells[nomTpoLlegada].Value = p.ingresoSistema;
 
-                        //String nomTpoPerm = "tpoPerm " + p.idPersona.ToString();
-                        //dgvDatos.Rows[i].Cells[nomTpoPerm].Value = p.tpoPerm;
+                        String nomTpoInterr = "tpoInterr " + p.ID.ToString();
+                        dgvDatos.Rows[i].Cells[nomTpoInterr].Value = p.salidaSistema;
                     }
 
 
@@ -607,7 +608,7 @@ namespace Final_SIM_Ejercicio_221
 
                 }
 
-                if (i == 15)
+                if (i == 100)
                 {
                     break;
                 }
