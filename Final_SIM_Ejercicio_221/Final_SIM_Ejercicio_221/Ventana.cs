@@ -279,7 +279,7 @@ namespace Final_SIM_Ejercicio_221
                             colect.ID = nroColectivo;
                             colect.estado = "ESPERANDO EN COLA"; // Estado por defecto
 
-                            listaColectivos.Add(colect);
+                            //listaColectivos.Add(colect);
 
                             //SI HAY PASAJEROS ESPERANDO Y NO HAY COLECTIVOS EMPIEZA A CARGAR 
                             if (ve.colaParada > 0 && ve.estadoParada != "CARGANDO")
@@ -344,7 +344,8 @@ namespace Final_SIM_Ejercicio_221
 
                             }
 
-                            listaPasajeros.Add(pasaj);
+
+                            //listaPasajeros.Add(pasaj);
                             
                             break;
 
