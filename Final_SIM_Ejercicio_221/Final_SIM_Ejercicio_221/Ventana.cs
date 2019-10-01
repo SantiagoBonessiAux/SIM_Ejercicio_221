@@ -456,6 +456,8 @@ namespace Final_SIM_Ejercicio_221
                             break;
                         case "Interrupcion Espera Pasajero":
                             ve.evento = "Interrupcion Espera Pasajero";
+
+                            
                             
                             
                             break;
@@ -491,7 +493,6 @@ namespace Final_SIM_Ejercicio_221
                     {
                         //DATOS PASAJERO
                         Pasajero pasaj = new Pasajero();
-                        // datos pasajero
                         nroPasajero++;
                         pasaj.ID = nroPasajero;
                         pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
@@ -541,8 +542,8 @@ namespace Final_SIM_Ejercicio_221
                         String nomEstado = "Estado" + p.ID.ToString();
                         dgvDatos.Rows[i].Cells[nomEstado].Value = p.estado;
 
-                        //String nomTpoSalida = "tpoSalida " + p.ID.ToString();
-                        //dgvDatos.Rows[i].Cells[nomTpoSalida].Value = p.ingresoSistema;
+                        String nomTpoLlegada = "tpoLlegada " + p.ID.ToString();
+                        dgvDatos.Rows[i].Cells[nomTpoLlegada].Value = p.ingresoSistema;
 
                         //String nomTpoPerm = "tpoPerm " + p.idPersona.ToString();
                         //dgvDatos.Rows[i].Cells[nomTpoPerm].Value = p.tpoPerm;
