@@ -292,6 +292,15 @@ namespace Final_SIM_Ejercicio_221
                                 ve.estadoParada = "CARGANDO";
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2); //proximo fin ascenso pasajero 
+
+                                foreach (var p in listaPasajeros)
+                                {
+                                    if (p.estado == "Esperando en parada")
+                                    {
+                                        p.estado = "Subiendo al Colectivo";
+                                        break;
+                                    }
+                                }
                             }
                             else if(ve.estadoParada == "CARGANDO")
                             {
@@ -349,6 +358,16 @@ namespace Final_SIM_Ejercicio_221
                             ve.colaParada--;
                             ve.capacidadCargaColect--;
                             pasajerosSubidos++;
+                            
+                            //Pone al primer pasajero de la lista en el colectivo
+                            foreach (var p in listaPasajeros)
+                            {
+                                if (p.estado == "Subiendo al Colectivo")
+                                {
+                                    p.estado = "En Colectivo";
+                                    break;
+                                }
+                            }
 
                             //if (ve.capacidadCargaColect == 0 && ve.colaParada == 0)
                             //{
@@ -372,12 +391,29 @@ namespace Final_SIM_Ejercicio_221
                             {
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2);
+                                foreach (var p in listaPasajeros)
+                                {
+                                    if (p.estado == "Esperando en parada")
+                                    {
+                                        p.estado = "Subiendo al Colectivo";
+                                        break;
+                                    }
+                                }
 
                             }
                             else if (ve.colaParada > 0 && ve.capacidadCargaColect == 0 && ve.colaColectivos > 0)
                             {
                                 ve.tpoAscensoPasajero = tpoAscensoPasajeros;
                                 ve.proxFinAscensoPasajero = Math.Round(ve.reloj + ve.tpoAscensoPasajero, 2);
+
+                                foreach (var p in listaPasajeros)
+                                {
+                                    if (p.estado == "Esperando en parada")
+                                    {
+                                        p.estado = "Subiendo al Colectivo";
+                                        break;
+                                    }
+                                }
 
                                 ve.colaColectivos--;
                                 ve.totColectQuePasan++;
@@ -415,6 +451,8 @@ namespace Final_SIM_Ejercicio_221
                                     ve.colaColectivos = 0;
                                 }
                             }
+
+                            
                             break;
                         case "Interrupcion Espera Pasajero":
                             ve.evento = "Interrupcion Espera Pasajero";
@@ -503,8 +541,8 @@ namespace Final_SIM_Ejercicio_221
                         String nomEstado = "Estado" + p.ID.ToString();
                         dgvDatos.Rows[i].Cells[nomEstado].Value = p.estado;
 
-                        String nomTpoSalida = "tpoSalida " + p.ID.ToString();
-                        dgvDatos.Rows[i].Cells[nomTpoSalida].Value = p.ingresoSistema;
+                        //String nomTpoSalida = "tpoSalida " + p.ID.ToString();
+                        //dgvDatos.Rows[i].Cells[nomTpoSalida].Value = p.ingresoSistema;
 
                         //String nomTpoPerm = "tpoPerm " + p.idPersona.ToString();
                         //dgvDatos.Rows[i].Cells[nomTpoPerm].Value = p.tpoPerm;
@@ -541,30 +579,30 @@ namespace Final_SIM_Ejercicio_221
                         }
                     }
 
-                }
+                    if (ve.reloj >= auxUltMin)
+                    {
+                        dgvDatos.Rows.Add(
+                        ve.fila, ve.evento, ve.reloj,
+                        //Legada colectivos
+                        ve.rndLlegColectivo, ve.tpoLlegColectivo, ve.proxLlegColectivo,
+                        //Llegada pasajeros
+                        ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero,
+                        //Ascenso pasajeros y fin ascenso, donde fin ascenso inicia salida de colectivo
+                        ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero,
+                        //Estado de la parada, Cola de pasajeros, y max cola de pasajeros en la parada
+                        ve.colaParada, ve.estadoParada, ve.capacidadCargaColect, ve.maxColaParada,
+                        //Cantidad pasajeros que se van 
+                        ve.cantPasajerosTransportados, ve.cantPasajerosRetirados,
+                        //Cola de colectivos en la parada
+                        ve.colaColectivos, ve.totColectQuePasan,
+                        //Cantidad pasajeros que se van por interrupcion
+                        ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj
 
+                        );
 
-                
-                if (ve.reloj >= auxUltMin)
-                {
-                    dgvDatos.Rows.Add(
-                    ve.fila, ve.evento, ve.reloj, 
-                    //Legada colectivos
-                    ve.rndLlegColectivo, ve.tpoLlegColectivo, ve.proxLlegColectivo,
-                    //Llegada pasajeros
-                    ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero,
-                    //Ascenso pasajeros y fin ascenso, donde fin ascenso inicia salida de colectivo
-                    ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero, 
-                    //Estado de la parada, Cola de pasajeros, y max cola de pasajeros en la parada
-                    ve.colaParada, ve.estadoParada, ve.capacidadCargaColect, ve.maxColaParada,
-                    //Cantidad pasajeros que se van 
-                    ve.cantPasajerosTransportados, ve.cantPasajerosRetirados, 
-                    //Cola de colectivos en la parada
-                    ve.colaColectivos, ve.totColectQuePasan,
-                    //Cantidad pasajeros que se van por interrupcion
-                    ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj
-                    
-                    );
+                    }
+
+                                                  
 
                 }
 
