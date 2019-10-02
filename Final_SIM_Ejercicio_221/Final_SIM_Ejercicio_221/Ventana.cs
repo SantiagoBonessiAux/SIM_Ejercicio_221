@@ -219,7 +219,6 @@ namespace Final_SIM_Ejercicio_221
             bool mostarPasajColect = this.chPasajColect.Checked;
             int pasajerosSubidos = 0;
 
-
             Random rnd = new Random();
             Simulacion sim = new Simulacion();
             VectorEstado ve = new VectorEstado();
@@ -355,15 +354,6 @@ namespace Final_SIM_Ejercicio_221
                             {
                                 ve.maxColaParada = ve.colaParada; //maxima cantidad de personas en parada de colectivo
                             }
-
-                           
-
-                            //TODO: AGREGAR DATOS PASAJERO A LA GRID VIEW
-                            if (mostarPasajColect)
-                            {
-
-                            }
-
                                                        
                             break;
 
@@ -385,24 +375,6 @@ namespace Final_SIM_Ejercicio_221
                                     break;
                                 }
                             }
-
-
-                            //if (ve.capacidadCargaColect == 0 && ve.colaParada == 0)
-                            //{
-                            //    ve.totColectQuePasan = ve.totColectQuePasan + ve.colaColectivos; // ya sean los colectivos que se retiran porque no hay mas personas en parada para cargar, como los colectivos que no suben a nadie
-                            //    ve.estadoParada = "Libre"; //no hay pasajeros
-                            //    ve.colaColectivos = 0; //cuando se llena el colectivo y no hay nadie mas en parada, se retiran todos los colectivos que hay en cola parada
-
-                            //    // TODO calcular la cantidad de colectivos que se retiran sin subir pasajeros
-
-                            //    foreach (var c in listaColectivos)
-                            //    {
-                            //        if (c.estado == "ESPERANDO EN COLA")
-                            //        {
-                            //            c.estado = "RETIRADO";
-                            //        }
-                            //    }
-                            //}
 
                             //SI SIGUEN PASAJEROS ESPERANDO; VUELVE A CALCULAR EL PROXIMO ASCENSO, SINO SE VA EL COLECTIVO
                             if (ve.colaParada > 0 && ve.capacidadCargaColect > 0)
@@ -609,6 +581,7 @@ namespace Final_SIM_Ejercicio_221
                         }
                     }
 
+
                     if (ve.reloj >= auxUltMin)
                     {
                         dgvDatos.Rows.Add(
@@ -627,17 +600,9 @@ namespace Final_SIM_Ejercicio_221
                         ve.colaColectivos, ve.totColectQuePasan,
                         //Cantidad pasajeros que se van por interrupcion
                         ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj, ve.tpoAcuEsperaPasajerosCola, ve.tpoPromEsperaPasajerosCola);
-
                     }
 
-                                                  
-
                 }
-
-                //if (i == 100)
-                //{
-                //    break;
-                //}
 
                 i++;
             }// fin del while
@@ -648,14 +613,12 @@ namespace Final_SIM_Ejercicio_221
             this.txtRdoCantPasajTransp.Text = ve.cantPasajerosTransportados.ToString();
             this.txtRdoCantPasajRetirados.Text = ve.cantPasajerosRetirados.ToString();
             this.txtRdoColaMaxPasaj.Text = ve.maxColaParada.ToString();
-            this.txtRdoPromEsperaPasaj.Text = "FALTA CALCULAR";
-
             this.txtRdoCantColectSistema.Text = ve.totColectQuePasan.ToString();
             this.txtRdoCantColectSinSubirPasaj.Text = ve.totColectQuePasanSinSubirPasaj.ToString();
 
-            if (ve.totColectQuePasanSinSubirPasaj == 0)
+            if (ve.totColectQuePasanSinSubirPasaj == 0 || ve.totColectQuePasan == 0)
             {
-                this.txtRdoPorcColectSinSubirPasaj.Text = "";
+                this.txtRdoPorcColectSinSubirPasaj.Text = "0";
             }
             else
             {
@@ -663,9 +626,6 @@ namespace Final_SIM_Ejercicio_221
                 double porcColectSinSubirPasajAux = Math.Round(porcColecSinSubirPasaj, 2);
                 this.txtRdoPorcColectSinSubirPasaj.Text = porcColectSinSubirPasajAux.ToString();
             }
-            //double porcColecSinSubirPasaj = (ve.totColectQuePasanSinSubirPasaj * 100) / ve.totColectQuePasan;
-            //double porcColectSinSubirPasajAux = Math.Round(porcColecSinSubirPasaj, 2);
-            //this.txtRdoPorcColectSinSubirPasaj.Text = porcColectSinSubirPasajAux.ToString();
 
             this.txtRdoPromEsperaPasaj.Text = ve.tpoPromEsperaPasajerosCola.ToString();
             
