@@ -173,6 +173,20 @@ namespace Final_SIM_Ejercicio_221
             PorcColectSinSubirPasaj.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDatos.Columns.Add(PorcColectSinSubirPasaj);
 
+            DataGridViewTextBoxColumn TiempoAcumEsperaEnCola = new DataGridViewTextBoxColumn();
+            TiempoAcumEsperaEnCola.Name = "tiempoAcumEsperaEnCola";
+            TiempoAcumEsperaEnCola.HeaderText = "Tiempo Acum Espera En Cola";
+            TiempoAcumEsperaEnCola.ReadOnly = true;
+            TiempoAcumEsperaEnCola.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(TiempoAcumEsperaEnCola);
+
+            DataGridViewTextBoxColumn PromEsperaPasajeroEnCola = new DataGridViewTextBoxColumn();
+            PromEsperaPasajeroEnCola.Name = "promEsperaPasajeroEnCola";
+            PromEsperaPasajeroEnCola.HeaderText = "Prom Espera Pasaj En Cola";
+            PromEsperaPasajeroEnCola.ReadOnly = true;
+            PromEsperaPasajeroEnCola.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(PromEsperaPasajeroEnCola);
+
             dgvDatos.Columns["reloj"].DefaultCellStyle.BackColor = Color.LightBlue;
 
             dgvDatos.Columns["proxLlegColectivo"].DefaultCellStyle.BackColor = Color.LightBlue;
@@ -372,7 +386,6 @@ namespace Final_SIM_Ejercicio_221
                                 }
                             }
 
-                            ve.tpoAcuEsperaPasajerosCola;
 
                             //if (ve.capacidadCargaColect == 0 && ve.colaParada == 0)
                             //{
@@ -502,7 +515,7 @@ namespace Final_SIM_Ejercicio_221
                     //Cola de colectivos en la parada
                     ve.colaColectivos, ve.totColectQuePasan,
                     //Cantidad pasajeros que se van por interrupcion
-                    ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj);
+                    ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj, ve.tpoAcuEsperaPasajerosCola, ve.tpoPromEsperaPasajerosCola);
 
                     if (ve.evento == "Llegada Pasajero")
                     {
@@ -591,7 +604,7 @@ namespace Final_SIM_Ejercicio_221
                             if (pasajeroSalida.ID == pasajerosSubidos)
                             {
                                 ve.tpoAcuEsperaPasajerosCola += Math.Round(ve.reloj - pasajeroSalida.ingresoSistema, 2);
-                                ve.tpoPromEsperaPasajerosCola = Math.Round(ve.tpoAcuEsperaPasajerosCola / pasajerosSubidos);
+                                ve.tpoPromEsperaPasajerosCola = Math.Round(ve.tpoAcuEsperaPasajerosCola / pasajerosSubidos,2);
                             }
                         }
                     }
@@ -613,9 +626,7 @@ namespace Final_SIM_Ejercicio_221
                         //Cola de colectivos en la parada
                         ve.colaColectivos, ve.totColectQuePasan,
                         //Cantidad pasajeros que se van por interrupcion
-                        ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj
-
-                        );
+                        ve.totColectQuePasanSinSubirPasaj, ve.porcColectSinSubirPasaj, ve.tpoAcuEsperaPasajerosCola, ve.tpoPromEsperaPasajerosCola);
 
                     }
 
@@ -642,9 +653,21 @@ namespace Final_SIM_Ejercicio_221
             this.txtRdoCantColectSistema.Text = ve.totColectQuePasan.ToString();
             this.txtRdoCantColectSinSubirPasaj.Text = ve.totColectQuePasanSinSubirPasaj.ToString();
 
+            if (ve.totColectQuePasanSinSubirPasaj == 0)
+            {
+                this.txtRdoPorcColectSinSubirPasaj.Text = "";
+            }
+            else
+            {
+                double porcColecSinSubirPasaj = (ve.totColectQuePasanSinSubirPasaj * 100) / ve.totColectQuePasan;
+                double porcColectSinSubirPasajAux = Math.Round(porcColecSinSubirPasaj, 2);
+                this.txtRdoPorcColectSinSubirPasaj.Text = porcColectSinSubirPasajAux.ToString();
+            }
             //double porcColecSinSubirPasaj = (ve.totColectQuePasanSinSubirPasaj * 100) / ve.totColectQuePasan;
             //double porcColectSinSubirPasajAux = Math.Round(porcColecSinSubirPasaj, 2);
             //this.txtRdoPorcColectSinSubirPasaj.Text = porcColectSinSubirPasajAux.ToString();
+
+            this.txtRdoPromEsperaPasaj.Text = ve.tpoPromEsperaPasajerosCola.ToString();
             
             watch.Stop();
             this.txtTimeElapsed.Text = watch.Elapsed.ToString();
