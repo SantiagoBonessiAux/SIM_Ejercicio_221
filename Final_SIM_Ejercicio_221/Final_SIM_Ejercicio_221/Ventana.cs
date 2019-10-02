@@ -103,6 +103,20 @@ namespace Final_SIM_Ejercicio_221
             TpoAscensoPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
             dgvDatos.Columns.Add(ProxFinAscensoPasajero);
 
+            DataGridViewTextBoxColumn IdInterrPasajero = new DataGridViewTextBoxColumn();
+            IdInterrPasajero.Name = "IdInterrPasajero";
+            IdInterrPasajero.HeaderText = "Id Interr Pasajero";
+            IdInterrPasajero.ReadOnly = true;
+            IdInterrPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(IdInterrPasajero);
+
+            DataGridViewTextBoxColumn ProxInterrPasajero = new DataGridViewTextBoxColumn();
+            ProxInterrPasajero.Name = "proxInterrPasajero";
+            ProxInterrPasajero.HeaderText = "Prox Interr Pasajero";
+            ProxInterrPasajero.ReadOnly = true;
+            ProxInterrPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
+            dgvDatos.Columns.Add(ProxInterrPasajero);
+
             DataGridViewTextBoxColumn ColaParada = new DataGridViewTextBoxColumn();
             ColaParada.Name = "colaParada";
             ColaParada.HeaderText = "Cola Parada";
@@ -194,6 +208,8 @@ namespace Final_SIM_Ejercicio_221
             dgvDatos.Columns["proxLlegPasajero"].DefaultCellStyle.BackColor = Color.LightBlue;
             
             dgvDatos.Columns["proxFinAscensoPasajero"].DefaultCellStyle.BackColor = Color.LightBlue;
+
+            dgvDatos.Columns["proxInterrPasajero"].DefaultCellStyle.BackColor = Color.LightBlue;
         }
 
         private void btnSimular_Click(object sender, EventArgs e)
@@ -229,6 +245,8 @@ namespace Final_SIM_Ejercicio_221
             int nroColectivo = 0;
             int i = 0;
 
+            Int64 idPasajeroInterrupcion = 0;
+            double tiempoInterr = 0;
             /**
             ESTADOS PARADA: LIBRE, OCUPADA, CARGANDO
             ESTADOS PASAJERO: ESPERANDO, SUBIENDO, 
@@ -245,11 +263,11 @@ namespace Final_SIM_Ejercicio_221
                     ve.evento = "INICIO";
                     ve.reloj = 0;
 
-                    ve.rndLlegColectivo = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
+                    ve.rndLlegColectivo = Math.Round((Convert.ToDouble(rnd.Next(1, 99)) / 100), 2);
                     ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
                     ve.proxLlegColectivo = Math.Round(ve.reloj + ve.tpoLlegColectivo, 2);
 
-                    ve.rndLlegPasajero = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
+                    ve.rndLlegPasajero = Math.Round((Convert.ToDouble(rnd.Next(1, 99)) / 100), 2);
                     ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                     ve.proxLlegPasajero = Math.Round(ve.reloj + ve.tpoLlegPasajero, 2);
 
@@ -277,6 +295,9 @@ namespace Final_SIM_Ejercicio_221
                         }                        
                     }
 
+                    idPasajeroInterrupcion = nroPasajeroInterr;
+                    tiempoInterr = proxInterrupcion;
+
                     ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero, proxInterrupcion);
                     ve.evento = EventoTiempo[0].ToString();
 
@@ -286,7 +307,8 @@ namespace Final_SIM_Ejercicio_221
                             ve.evento = "Llegada Colectivo";
                             ve.reloj = ve.proxLlegColectivo;
 
-                            ve.rndLlegColectivo = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
+                            ve.rndLlegColectivo = Math.Round((Convert.ToDouble(rnd.Next(1, 99)) / 100), 2);
+                            //ve.rndLlegColectivo = Math.Round(rnd.NextDouble(), 2);
                             ve.tpoLlegColectivo = sim.getTiempoLlegadaColectivo(ve.rndLlegColectivo, promLlegColectivos);
                             ve.proxLlegColectivo = Math.Round(ve.reloj + ve.tpoLlegColectivo, 2);
 
@@ -331,7 +353,7 @@ namespace Final_SIM_Ejercicio_221
                             ve.evento = "Llegada Pasajero";
                             ve.reloj = ve.proxLlegPasajero;
 
-                            ve.rndLlegPasajero = Math.Round((Convert.ToDouble(rnd.Next(0, 99)) / 100), 2);
+                            ve.rndLlegPasajero = Math.Round((Convert.ToDouble(rnd.Next(1, 99)) / 100), 2);
                             ve.tpoLlegPasajero = sim.getTiempoLlegadaPasajero(ve.rndLlegPasajero, promLlegPasajeros);
                             ve.proxLlegPasajero = Math.Round(ve.reloj + ve.tpoLlegPasajero, 2);
 
@@ -477,7 +499,7 @@ namespace Final_SIM_Ejercicio_221
                     //Llegada pasajeros
                     ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero,
                     //Ascenso pasajeros y fin ascenso, donde fin ascenso inicia salida de colectivo
-                    ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero,
+                    ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero, idPasajeroInterrupcion, tiempoInterr,
                     //Estado de la parada, Cola de pasajeros, y max cola de pasajeros en la parada
                     ve.colaParada, ve.estadoParada, ve.capacidadCargaColect, ve.maxColaParada,
                     //Cantidad pasajeros que se van 
@@ -495,7 +517,7 @@ namespace Final_SIM_Ejercicio_221
                         pasaj.ID = nroPasajero;
                         pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
                         pasaj.ingresoSistema = ve.reloj;
-                        pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+                        pasaj.salidaSistema = Math.Round(ve.reloj + tpoEsperaMaximaPasajeros, 2); // tiempo en el que va a dejar la cola
                         listaPasajeros.Add(pasaj);
 
                         DataGridViewTextBoxColumn colEstadoPasajero = new DataGridViewTextBoxColumn();
@@ -561,7 +583,7 @@ namespace Final_SIM_Ejercicio_221
                         pasaj.ID = nroPasajero;
                         pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
                         pasaj.ingresoSistema = ve.reloj;
-                        pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+                        pasaj.salidaSistema = Math.Round(ve.reloj + tpoEsperaMaximaPasajeros, 2); // no sabemos la salida hasta que se vaya
                         listaPasajeros.Add(pasaj);
 
                     }
@@ -589,7 +611,7 @@ namespace Final_SIM_Ejercicio_221
                         //Llegada pasajeros
                         ve.rndLlegPasajero, ve.tpoLlegPasajero, ve.proxLlegPasajero,
                         //Ascenso pasajeros y fin ascenso, donde fin ascenso inicia salida de colectivo
-                        ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero,
+                        ve.tpoAscensoPasajero, ve.proxFinAscensoPasajero, idPasajeroInterrupcion, tiempoInterr,
                         //Estado de la parada, Cola de pasajeros, y max cola de pasajeros en la parada
                         ve.colaParada, ve.estadoParada, ve.capacidadCargaColect, ve.maxColaParada,
                         //Cantidad pasajeros que se van 
@@ -602,8 +624,34 @@ namespace Final_SIM_Ejercicio_221
 
                 }
 
+                if (chPasajColect.Checked == false)
+                {
+                    foreach (var p in listaPasajeros)
+                    {
+                        if (p.estado == "En Colectivo")
+                        {
+                            listaPasajeros.Remove(p);
+                            break;
+                        }
+                    }
+                }
+                
 
                 i++;
+
+                //if (i > 400000)
+                //{
+
+
+                //    break;
+                //}
+
+                //if (ve.reloj > auxUltMin)
+                //{
+                //    MessageBox.Show("El reloj esta " + ve.reloj.ToString() + " fila" + ve.fila.ToString());
+                //}
+
+
             }// fin del while
 
 
