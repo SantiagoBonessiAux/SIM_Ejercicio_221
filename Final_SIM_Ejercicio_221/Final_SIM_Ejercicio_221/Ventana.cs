@@ -224,7 +224,6 @@ namespace Final_SIM_Ejercicio_221
             VectorEstado ve = new VectorEstado();
 
             List<Pasajero> listaPasajeros = new List<Pasajero>();
-            List<Colectivo> listaColectivos = new List<Colectivo>();
 
             int nroPasajero = 0;
             int nroColectivo = 0;
@@ -326,7 +325,6 @@ namespace Final_SIM_Ejercicio_221
                                 ve.totColectQuePasan++;
                                 ve.totColectQuePasanSinSubirPasaj++;
                             }
-                            listaColectivos.Add(colect);
 
                             break;
                         case "Llegada Pasajero":
@@ -603,6 +601,7 @@ namespace Final_SIM_Ejercicio_221
                     }
 
                 }
+
 
                 i++;
             }// fin del while
