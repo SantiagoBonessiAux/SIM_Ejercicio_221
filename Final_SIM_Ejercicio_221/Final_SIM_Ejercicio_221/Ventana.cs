@@ -247,21 +247,25 @@ namespace Final_SIM_Ejercicio_221
                 {
                     //SIGUIENTES EVENTOS DE LA SIMULACION
 
-                    double tiempoMaxEspera = 0;
+                    double proxInterrupcion = 0;
+                    Int64 nroPasajeroInterr = 0;
+
+                    if (ve.reloj > proxInterrupcion)
+                    {
+                        proxInterrupcion = 0;
+                    }
 
                     foreach (var p in listaPasajeros)
                     {
-                        if (p.estado == "Esperando en Parada" && p.salidaSistema > tiempoMaxEspera)
+                        if (p.estado == "Esperando en parada" && p.salidaSistema > proxInterrupcion)
                         {
-                            tiempoMaxEspera = p.salidaSistema;
-                        }
-                        else
-                        {
+                            proxInterrupcion = p.salidaSistema;
+                            nroPasajeroInterr = p.ID;
                             break;
-                        }
+                        }                        
                     }
-                    
-                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero);
+
+                    ArrayList EventoTiempo = sim.devolverProximoEvento(ve.proxLlegColectivo, ve.proxLlegPasajero, ve.proxFinAscensoPasajero, proxInterrupcion);
                     ve.evento = EventoTiempo[0].ToString();
 
                     switch (EventoTiempo[0].ToString())
@@ -280,10 +284,8 @@ namespace Final_SIM_Ejercicio_221
                             colect.ID = nroColectivo;
                             colect.estado = "ESPERANDO EN COLA"; // Estado por defecto
 
-                            listaColectivos.Add(colect);
-
                             //SI HAY PASAJEROS ESPERANDO Y NO HAY COLECTIVOS EMPIEZA A CARGAR 
-                            if (ve.colaParada > 0 && ve.estadoParada != "CARGANDO")
+                            if (ve.colaParada > 0 && ve.estadoParada =="OCUPADA")
                             {
 
                                 colect.estado = "CARGANDO PASAJEROS";
@@ -311,6 +313,7 @@ namespace Final_SIM_Ejercicio_221
                                 ve.totColectQuePasan++;
                                 ve.totColectQuePasanSinSubirPasaj++;
                             }
+                            listaColectivos.Add(colect);
 
                             break;
                         case "Llegada Pasajero":
@@ -368,6 +371,8 @@ namespace Final_SIM_Ejercicio_221
                                     break;
                                 }
                             }
+
+                            ve.tpoAcuEsperaPasajerosCola;
 
                             //if (ve.capacidadCargaColect == 0 && ve.colaParada == 0)
                             //{
@@ -455,9 +460,19 @@ namespace Final_SIM_Ejercicio_221
                             
                             break;
                         case "Interrupcion Espera Pasajero":
-                            ve.evento = "Interrupcion Espera Pasajero";
+                            ve.evento = "Interrupcion Espera Pasajero" + nroPasajeroInterr.ToString();
+                            ve.reloj = proxInterrupcion;
 
-                            
+                            ve.colaParada--;
+                            ve.cantPasajerosRetirados++;
+
+                            foreach (var p in listaPasajeros)
+                            {
+                                if (p.ID == nroPasajeroInterr)
+                                {
+                                    p.estado = "Retirado";
+                                }
+                            }                           
                             
                             
                             break;
@@ -501,7 +516,7 @@ namespace Final_SIM_Ejercicio_221
                         listaPasajeros.Add(pasaj);
 
                         DataGridViewTextBoxColumn colEstadoPasajero = new DataGridViewTextBoxColumn();
-                        colEstadoPasajero.HeaderText = "Pasaj " + pasaj.estado.ToString() + "Estado";
+                        colEstadoPasajero.HeaderText = "Estado P" + pasaj.ID.ToString();
                         colEstadoPasajero.Name = "Estado" + pasaj.ID.ToString();
                         colEstadoPasajero.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                         colEstadoPasajero.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -509,7 +524,7 @@ namespace Final_SIM_Ejercicio_221
                         dgvDatos.Rows[i].Cells[colEstadoPasajero.Name].Value = pasaj.estado;
 
                         DataGridViewTextBoxColumn colTpoLLeg = new DataGridViewTextBoxColumn();
-                        colTpoLLeg.HeaderText = "Pasaj " + pasaj.ID.ToString() + " Tpo Lleg.";
+                        colTpoLLeg.HeaderText = "Tpo Lleg P" + pasaj.ID.ToString();
                         colTpoLLeg.Name = "tpoLlegada " + pasaj.ID.ToString();
                         colTpoLLeg.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                         colTpoLLeg.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -517,7 +532,7 @@ namespace Final_SIM_Ejercicio_221
                         dgvDatos.Rows[i].Cells[colTpoLLeg.Name].Value = pasaj.ingresoSistema;
 
                         DataGridViewTextBoxColumn colTpoInterrupcion = new DataGridViewTextBoxColumn();
-                        colTpoInterrupcion.HeaderText = "Tpo Interr";
+                        colTpoInterrupcion.HeaderText = "Tpo Interr P" + pasaj.ID.ToString();
                         colTpoInterrupcion.Name = "tpoInterr " + pasaj.ID.ToString();
                         colTpoInterrupcion.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
                         colTpoInterrupcion.SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -563,7 +578,7 @@ namespace Final_SIM_Ejercicio_221
                         pasaj.ID = nroPasajero;
                         pasaj.estado = "Esperando en parada"; //por defecto el estado es "Esperando en parada"
                         pasaj.ingresoSistema = ve.reloj;
-                        // pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
+                        pasaj.salidaSistema = ve.reloj + tpoEsperaMaximaPasajeros; // no sabemos la salida hasta que se vaya
                         listaPasajeros.Add(pasaj);
 
                     }
@@ -608,10 +623,10 @@ namespace Final_SIM_Ejercicio_221
 
                 }
 
-                if (i == 100)
-                {
-                    break;
-                }
+                //if (i == 100)
+                //{
+                //    break;
+                //}
 
                 i++;
             }// fin del while

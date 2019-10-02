@@ -16,7 +16,7 @@ namespace Final_SIM_Ejercicio_221
         /// <param name="proxLlegColectivo"></param>
         /// <param name="proxLlegPasajero"></param>
         /// <returns></returns>
-        public ArrayList devolverProximoEvento(double proxLlegColectivo, double proxLlegPasajero, double proxFinAscensoPasajero)
+        public ArrayList devolverProximoEvento(double proxLlegColectivo, double proxLlegPasajero, double proxFinAscensoPasajero, double proxInterrupcion)
         {
             ArrayList listaEventoTiempo = new ArrayList(2);
 
@@ -39,6 +39,12 @@ namespace Final_SIM_Ejercicio_221
             {
                 listaTiempos.Add(proxFinAscensoPasajero);
                 listaEventos.Add("Fin Ascenso Pasajero");
+            }
+
+            if (proxInterrupcion > 0)
+            {
+                listaTiempos.Add(proxInterrupcion);
+                listaEventos.Add("Interrupcion Espera Pasajero");
             }
 
             //Tomamos el menor de los tiempos asi obtenemos el tiempo del próximo evento
